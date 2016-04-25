@@ -1,6 +1,7 @@
 # Sacked
 
-[Heroku link][heroku] **TBD** Will be updated when the site goes live
+[Heroku link][heroku]
+
 I plan to purchase the domain sacked.xyz after this proposal is approved.
 It can be purchased here: https://www.1and1.com/
 
@@ -8,7 +9,7 @@ It can be purchased here: https://www.1and1.com/
 
 ## Minimum Viable Product
 
-Sacked is webchat application for job seekers to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack, Glassdoor as well as other chat applications. Sacked will be built using Ruby on Rails for the backed, and React with Flux architecture for the front end. The minimum viable product will contain the following features:
+Sacked is webchat application for job seeker. It offers a chance for users to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack and Glassdoor. Sacked will be built using Ruby on Rails and React with Flux architecture. The minimum viable product will contain the following features:
 
 - [ ] Account creation and user authentication
 - [ ] Realtime chat with both direct messages, one to one chat, and channels, multiperson chat
@@ -30,8 +31,8 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 Users Can:
 
 - [ ] Create a new account
-- [ ] Sign in and out using a new account, demo account or anonymous account
-- [ ] View and customize their account settings
+- [ ] Sign in and out using a new account, a demo account or an anonymous account
+<!-- - [ ] View and customize their account settings -->
 - [ ] Post and read messages
 - [ ] Post to channels i.e group chats
 - [ ] Post direct messages to other users
@@ -48,7 +49,7 @@ Users Can:
 - [ ] Like or star posts
 - [ ] Post well formatted links
 - [ ] Post mentions, linking to other users by name
-- [ ] Post files and expect those files to be maintained
+- [ ] Post files and have those files to be maintained across sessions
 - [ ] Post with different formatting using a markup language
 - [ ] Create links to specific chat items
 - [ ] View other users by clicking on their username
@@ -58,7 +59,7 @@ Users Can:
 - [ ] Setup notifications
 - [ ] Chat with high quality bots
 - [ ] Chat with me, a real human being
-- [ ] Users can chat on their iPhone via a mobile app or site
+- [ ] Chat On a mobile platform via a mobile app or mobile web site
 
 ## Design Docs
 * [View Wireframes][views]
@@ -75,9 +76,9 @@ Users Can:
 
 ## Implementation Timeline
 
-### Phase 1: Auth Setup and Minimum Viable Front End (1 days)
+### Phase 1: Auth Setup and Landing Page (1 days)
 
-**Objective:** View splash page, create user, login, view initial screen
+**Objective:** the user should be able to: View the splash page, create a new user and login, then view an initial landing screen
 
 - [x] create new project
 - [ ] create `User` model
@@ -154,7 +155,7 @@ Users Can:
 - [ ] Allow users to create new direct messages using user search.
 
 
-### Phase 8: Final Styling and Refactoring (1.5 day)
+### Phase 9: Final Styling and Refactoring (1.5 day)
 
 **objective:** Make site beautiful, remove all bugs.
 
