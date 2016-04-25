@@ -32,6 +32,7 @@ Users Can:
 
 - [ ] Create a new account
 - [ ] Sign in and out using a new account, a demo account or an anonymous account
+
 <!-- - [ ] View and customize their account settings -->
 - [ ] Post and read messages
 - [ ] Post to channels i.e group chats
@@ -59,7 +60,7 @@ Users Can:
 - [ ] Setup notifications
 - [ ] Chat with high quality bots
 - [ ] Chat with me, a real human being
-- [ ] Chat On a mobile platform via a mobile app or mobile web site
+- [ ] Chat on a mobile platform via a mobile app or mobile web site
 
 ## Design Docs
 * [View Wireframes][views]
@@ -86,19 +87,20 @@ Users Can:
 - [ ] splash page
 - [ ] user signup/sign in pages
 <!-- - [ ] User account page -->
-- [ ] initial screen after sign in
+- [ ] initial landing page after sign in
 
 ### Phase 2: Basic Chat Implementation (2 days)
 
-**Objective:** Messages can be created, and viewed in order on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users.
+**Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users.
 
 - [ ] create `Message` model
 - [ ] CRUD API for notes (`Messages`)
 - [ ] jBuilder views for messsages
 - [ ] setup Webpack & Flux scaffold
+- [ ] setup websockets for real time updates
 - [ ] Implement Flux loop for messages
-- [ ] Create a React index with indexItems to display messages
-- [ ] Create a React form to create messages
+- [ ] Create a React messageIndex with messageIndexItems to display messages
+- [ ] Create a React messageForm to create new messages
 - [ ] Test these in browser
 - [ ] Test these across multiple users
 
