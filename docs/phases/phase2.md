@@ -35,3 +35,4 @@
 ## Gems/Libraries
 * Flux Dispatcher (npm)
 * private_pub (Faye for Rails)
+* websocket-rails 

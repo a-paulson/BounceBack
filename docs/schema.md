@@ -6,8 +6,8 @@ column name         | data type | details
 id                  | integer   | not null, primary key
 body                | text      | not null
 author_id           | integer   | not null, foreign key (references users), indexed
-channel_id          | integer   |
-direct_message_id   | integer   |
+conversation_id     | integer   |
+conversation_type   | integer   |
 
 ## channels
 column name | data type | details

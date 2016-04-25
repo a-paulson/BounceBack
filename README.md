@@ -32,7 +32,6 @@ Users Can:
 
 - [ ] Create a new account
 - [ ] Sign in and out using a new account, a demo account or an anonymous account
-
 <!-- - [ ] View and customize their account settings -->
 - [ ] Post and read messages
 - [ ] Post to channels i.e group chats
@@ -148,16 +147,14 @@ Users Can:
 - [ ] Add seed data to channels to flesh out contents
 - [ ] Implement multiple bots with different behavior to simulate various conversation types.
 
-### Phase 8: User Search (.5 day)
+<!-- ### Phase 8: User Search (.5 day)
 
 **objective:** Implement user search for direct messaging
 
 - [ ] Add Flux loop for user search by username
 - [ ] Add search bar React component
-- [ ] Allow users to create new direct messages using user search.
-
-
-### Phase 9: Final Styling and Refactoring (1.5 day)
+- [ ] Allow users to create new direct messages using user search. -->
+### Phase 8: Final Styling and Refactoring (1 day)
 
 **objective:** Make site beautiful, remove all bugs.
 
