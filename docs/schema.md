@@ -1,51 +1,45 @@
 # Schema Information
 
-## notes
+## messages
+column name         | data type | details
+--------------------|-----------|-----------------------
+id                  | integer   | not null, primary key
+body                | text      | not null
+author_id           | integer   | not null, foreign key (references users), indexed
+channel_id          | integer   |
+direct_message_id   | integer   |
+
+## channels
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+description | string    |
 
-## notebooks
+## channel_users
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
-
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
+channel_id  | integer   | not null, foreign key (references channels), indexed, unique [user_id]
 user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
 
-## tags
+## direct messages
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+user_id_1     | integer   | not null, foreign key (references users), indexed
+user_id_2     | integer   | not null, foreign key (references users), indexed
 
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
 
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
+fname           | string    | not null, indexed, unique
+lname           | string    | not null, indexed, unique
+email           | string    | not null, indexed, unique
+user_type       | string    | not null
+direct_messages | array     | not null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique

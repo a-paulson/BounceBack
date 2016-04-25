@@ -2,43 +2,32 @@
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* Channel
+* ChannelUser
+* DirectMessage
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::ChannelsController (create, index, show)
+* Api::DirectMessagesController (create, show)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
+* Channels/index.json.jbuilder
+* DirectMessages/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+* ChannelIndex
+  - ChannelIndexItem
+* DirectMessageIndex
+  - DirectMessageIndexItem
 
 ### Stores
-* Notebook
 
 ### Actions
-* ApiActions.receiveAllNotebooks -> triggered by ApiUtil
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
-* NotebookActions.fetchAllNotebooks -> triggers ApiUtil
-* NotebookActions.fetchSingleNotebook
-* NotebookActions.createNotebook
-* NotebookActions.editNotebook
-* NotebookActions.destroyNotebook
+* ApiActions.receiveAllChannels -> triggered by ApiUtil
+* ChannelActions.fetchAllChannels -> triggers ApiUtil
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllChannels
 
 ## Gems/Libraries

@@ -1,4 +1,4 @@
-# FresherNote
+<!-- # FresherNote
 
 [FresherNote live][heroku] **NB:** This should be a link to your production site
 
@@ -71,4 +71,4 @@ Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.j
 
 ### Direct Messaging
 
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.   -->

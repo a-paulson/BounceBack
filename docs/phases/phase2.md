@@ -2,37 +2,36 @@
 
 ## Rails
 ### Models
+* Message
 
 ### Controllers
+* Api::MessageController (create, index)
+
 
 ### Views
+* messages/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* App
+* MessagePane
+* MessageIndex
+  - MessageIndexItem
+* MessageForm
 
 ### Stores
-* Note
+* Message
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ApiActions.receiveAllMessages -> triggered by ApiUtil
+* ApiActions.receiveNewMessage
+* MessageActions.fetchAllMessages -> triggers ApiUtil
+* MessageActions.createMessage
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllMessages
+* ApiUtil.createMessage
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap
+* private_pub (Faye for Rails)

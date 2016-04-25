@@ -1,13 +1,15 @@
 ## Component Hierarchy
 
 * `App`
-  * `SearchIndex`
-  * `NotebooksIndex`
-    * `NotebookIndexItem`
-  * `NotebookForm`
-  * `NotesIndex`
-    * `NoteForm`
-    * `NoteIndexItem`
-  * `NoteDetail`
-    * `NoteTags`
-    * `NoteEditArea`
+  * `NavBar`
+    <!-- * `UserAccount` -->
+    * `ChannelIndex`
+      * `ChannelIndexItem`
+    * `DirectMessageIndex`
+      * `DirectMessageIndexItem`
+    <!-- * `UserSearchBar` -->
+  * `MessagePane`
+    * `MessageIndex`
+      * `MessageIndexItem`
+    * `MessageForm`
+  <!-- * `UserForm` -->
