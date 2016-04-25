@@ -6,15 +6,15 @@ column name         | data type | details
 id                  | integer   | not null, primary key
 body                | text      | not null
 author_id           | integer   | not null, foreign key (references users), indexed
-conversation_id     | integer   |
-conversation_type   | integer   |
+conversation_id     | integer   | not null,  (polymorphic association)
+conversation_type   | integer   | not null, (polymorphic association)
 
 ## channels
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-description | string    |
+description | string    | not null
 
 ## channel_users
 column name | data type | details
