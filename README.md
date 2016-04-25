@@ -32,7 +32,6 @@ Users Can:
 
 - [ ] Create a new account
 - [ ] Sign in and out using a new account, a demo account or an anonymous account
-<!-- - [ ] View and customize their account settings -->
 - [ ] Post and read messages
 - [ ] Post to channels i.e group chats
 - [ ] Post direct messages to other users
@@ -85,7 +84,6 @@ Users Can:
 - [ ] authentication
 - [ ] splash page
 - [ ] user signup/sign in pages
-<!-- - [ ] User account page -->
 - [ ] initial landing page after sign in
 
 ### Phase 2: Basic Chat Implementation (2 days)
@@ -205,6 +203,9 @@ Account customization
   Real Name
   Email
   local time???
+
+[ ] User account page
+[ ] View and customize their account settings
 
   Chat Bots
     interview questions
