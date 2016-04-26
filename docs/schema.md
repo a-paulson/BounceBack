@@ -30,16 +30,24 @@ id          | integer   | not null, primary key
 user_id_1     | integer   | not null, foreign key (references users), indexed
 user_id_2     | integer   | not null, foreign key (references users), indexed
 
+## direct message user
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key (references users),
+direct_message_id | integer   | not null, foreign key (references direct_messages), indexed
+
+
+
 
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
-fname           | string    | not null, indexed, unique
-lname           | string    | not null, indexed, unique
-email           | string    | not null, indexed, unique
+fname           | string    | not null, indexed
+lname           | string    | not null, indexed
+email           | string    | not null, indexed
 user_type       | string    | not null
-direct_messages | array     | not null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique

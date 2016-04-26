@@ -81,10 +81,14 @@ Users Can:
 
 - [x] create new project
 - [ ] create `User` model
-- [ ] authentication
+- [ ] create auth controllers model
+- [ ] setup Webpack & Flux scaffold
+- [ ] Front end authentication
 - [ ] splash page
 - [ ] user signup/sign in pages
+- [ ] Guest Login
 - [ ] initial landing page after sign in
+- [ ] Push to Heroku
 
 ### Phase 2: Basic Chat Implementation (2 days)
 
@@ -93,7 +97,6 @@ Users Can:
 - [ ] create `Message` model
 - [ ] CRUD API for notes (`Messages`)
 - [ ] jBuilder views for messsages
-- [ ] setup Webpack & Flux scaffold
 - [ ] setup websockets for real time updates
 - [ ] Implement Flux loop for messages
 - [ ] Create a React messageIndex with messageIndexItems to display messages
@@ -250,3 +253,14 @@ Make sure to reset seed Data!!!
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md -->
+
+
+<!-- Notes:
+          Enforcing one account per email,
+          Add account recovery if time.
+
+          Schwank auth?
+          Allow to login with username or email
+
+          Inclusion constraint on user_type
+          -->
