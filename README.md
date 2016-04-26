@@ -121,13 +121,12 @@ Users Can:
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Chatbots (1 day)
+### Phase 5: Chatbots (.5 day)
 
 **Objective:** Implement a chatbot for user interaction.
 
 - Create very simple chatbot that will ask practice interview questions.
   - [ ] First version will use an array of data with random selection.
-  - [ ] Try and develop a more intelligent bot using [Microsoft Bot Framework](https://dev.botframework.com/).
 
 ### Phase 6: Demo Accounts (.5 days)
 
@@ -161,6 +160,9 @@ Users Can:
 - [ ] Remove any remaining bugs
 
 ##### Other bonus features will be added to this schedule as it is updated.
+
+- Advanced Chatbot
+  - [ ] Try and develop a more intelligent bot using [Microsoft Bot Framework](https://dev.botframework.com/).
 
 <!-- User Accounts
 MVP
