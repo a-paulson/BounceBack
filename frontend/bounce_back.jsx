@@ -6,8 +6,8 @@ var React = require("react"),
     IndexRoute = ReactRouter.IndexRoute,
     hashHistory = ReactRouter.hashHistory;
 
-var UserStore = require('./stores/userStore');
-var UserClientActions = require('./actions/user/userClientActions');
+var SignInForm = require('./components/signInForm');
+var MessageScreen = require('./components/messageScreen');
 
 var App = React.createClass({
   render: function() {
@@ -22,7 +22,8 @@ var App = React.createClass({
 
 var routes =(
   <Route path="/" component={App}>
-
+    <IndexRoute component={SignInForm} />
+    <Route path="messages" component={MessageScreen} />
   </Route>
 );
 
