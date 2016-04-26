@@ -1,15 +1,15 @@
-# Sacked
+# Bounce Back
 
 [Heroku link][heroku]
 
-I plan to purchase the domain sacked.xyz after this proposal is approved.
+I plan to purchase the domain bounceback.work after this proposal is approved.
 It can be purchased here: https://www.1and1.com/
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-Sacked is webchat application for job seeker. It offers a chance for users to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack and Glassdoor. Sacked will be built using Ruby on Rails and React with Flux architecture. The minimum viable product will contain the following features:
+BounceBack is webchat application for job seeker. It offers a chance for users to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack and Glassdoor. BounceBack will be built using Ruby on Rails and React with Flux architecture. The minimum viable product will contain the following features:
 
 - [ ] Account creation and user authentication
 - [ ] Realtime chat with both direct messages, one to one chat, and channels, multiperson chat
@@ -21,7 +21,7 @@ Sacked is webchat application for job seeker. It offers a chance for users to ho
 
 ## Product Goals and Priorities
 
-Sacked will allow users to do the following:
+BounceBack will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
