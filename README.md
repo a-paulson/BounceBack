@@ -80,9 +80,9 @@ Users Can:
 **Objective:** the user should be able to: View the splash page, create a new user and login, then view an initial landing screen
 
 - [x] create new project
-- [ ] create `User` model
-- [ ] create auth controllers model
-- [ ] setup Webpack & Flux scaffold
+- [x] create `User` model
+- [x] create auth controllers model
+- [x] setup Webpack & Flux scaffold
 - [ ] Front end authentication
 - [ ] splash page
 - [ ] user signup/sign in pages
@@ -263,4 +263,10 @@ Make sure to reset seed Data!!!
           Allow to login with username or email
 
           Inclusion constraint on user_type
+
+          use browser history?
+
+          Make sure to show a user that they are logged in and their credentials in upper left corner of the screen.
+
+          Persistent Login
           -->

@@ -1,10 +1,12 @@
 class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_credentials(*session_params)
+    @user = User.find_by_credentials(params["user"]["username"],
+                                     params["user"]["password"])
 
     if @user.nil?
-      render json: {error: "Credentials Are Wrong"}
+      @errors = ["Your username or password is incorrect."]
+      render :errors, status: 400
     else
       login!(@user)
       redirect_to api_user_url
@@ -12,12 +14,13 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-
+    @user = current_user;
+    logout!
   end
 
-  private
-
-  def session_params
-    [params[:user][:username], params[:user][:password]]
-  end
+  # private
+  #
+  # def session_params
+  #   [params[:user][:username], params[:user][:password]]
+  # end
 end

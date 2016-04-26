@@ -1,5 +1,7 @@
 var UserConstants = {
-
+  RECEIVE_CURRENT_USER: "RECEIVE_CURRENT_USER",
+  REMOVE_CURRENT_USER: "REMOVE_CURRENT_USER",
+  RECEIVE_ERRORS: "RECEIVE_ERRORS"
 };
 
 module.exports = UserConstants;

@@ -6,6 +6,9 @@ var React = require("react"),
     IndexRoute = ReactRouter.IndexRoute,
     hashHistory = ReactRouter.hashHistory;
 
+var UserStore = require('./stores/userStore');
+var UserClientActions = require('./actions/user/userClientActions');
+
 var App = React.createClass({
   render: function() {
     return (
