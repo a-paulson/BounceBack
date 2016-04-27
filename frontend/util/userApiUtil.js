@@ -9,7 +9,6 @@ var UserApiUtil = {
         UserServerActions.receiveCurrentUser(user);
       },
       error: function(errors){
-        console.log("bad bad bad");
         UserServerActions.receiveErrors(errors.responseJSON);
       }
     });
