@@ -2,7 +2,7 @@
 
 [BounceBack.work][heroku]
 
-[heroku]: bounceback.work/
+[heroku]: http://bounceback.work/
 
 ## Minimum Viable Product
 
