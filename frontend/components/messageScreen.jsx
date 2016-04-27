@@ -10,11 +10,6 @@ var MessageScreen = React.createClass({
     UserClientActions.logout();
   },
 
-  componentDidMount: function() {
-    console.log("mount");
-    debugger;
-  },
-
   render: function() {
     var username = this.state.currentUser ? this.state.currentUser.username : "";
     return (

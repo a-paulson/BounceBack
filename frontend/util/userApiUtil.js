@@ -29,6 +29,20 @@ var UserApiUtil = {
     });
   },
 
+  guestLogin: function(){
+    $.ajax({
+      type: "GET",
+      url: "api/user/guest",
+      dataType: "json",
+      success: function(currentUser){
+        UserServerActions.receiveCurrentUser(currentUser);
+      },
+      error: function(errors){
+        UserServerActions.receiveErrors(errors.responseJSON);
+      }
+    });
+  },
+
   logout: function(){
     $.ajax({
       type: "DELETE",
@@ -46,7 +60,7 @@ var UserApiUtil = {
   createUser: function(userData){
     $.ajax({
       type: "POST",
-      url: "api/session",
+      url: "api/user",
       dataType: "json",
       data: {user: userData},
       success: function(user){

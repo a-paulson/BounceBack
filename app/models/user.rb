@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :username, :fname, :lname, :email, :email, :user_type, :password_digest, :session_token, presence: true
+  validates :username, :fname, :lname, :email, :user_type, :password_digest, :session_token, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
   validates :email, :username, :session_token, uniqueness: true
 
@@ -9,14 +9,21 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
-    p user
     return nil if user.nil?
-    p user.is_password?(password)
     user.is_password?(password) ? user : nil
   end
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64
+  end
+
+  def self.guest_user
+    username = nil
+    while(username.nil? || User.find_by(username: username))
+      username = "Guest" + rand(10000).to_s.rjust(4, "0")
+    end
+    guest_user = User.create!(username: username, fname: "guest", lname: "guest",
+                              email: username, user_type: "guest", password_digest: "guest")    
   end
 
   def reset_session_token!

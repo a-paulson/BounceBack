@@ -9,6 +9,10 @@ var UserClientActions = {
     UserApiUtil.login(user);
   },
 
+  guestLogin: function(){
+    UserApiUtil.guestLogin();
+  },
+
   logout: function(){
     UserApiUtil.logout();
   },

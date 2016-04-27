@@ -1,10 +1,11 @@
 var React = require('react');
 var UserClientActions = require('../actions/user/userClientActions');
 var CurrentUserStateMixin = require('../mixins/currentUserState');
+var AuthError = require('../mixins/authError');
 var hashHistory = require("react-router").hashHistory;
 
 var SignInForm = React.createClass({
-  mixins: [CurrentUserStateMixin],
+  mixins: [CurrentUserStateMixin, AuthError],
 
   getInitialState: function() {
     return {
@@ -18,6 +19,11 @@ var SignInForm = React.createClass({
     UserClientActions.login({username: this.state.username,
                              password: this.state.password});
     this.setState({username: "", password: ""});
+  },
+
+  guestLogin: function(event){
+    event.preventDefault();
+    UserClientActions.guestLogin();
   },
 
   changeUsername: function(event){
@@ -36,8 +42,17 @@ var SignInForm = React.createClass({
     if(this.state.currentUser !== undefined){
       hashHistory.push("/messages");
     }
+    if (this.state.errors.length === 0){
+      var errors = "";
+    } else{
+      var errors = this.state.errors.map(function(error){
+        return <h4>{error}</h4>;
+      });
+    }
+
     return (
       <div>
+        {errors}
         <form onSubmit={this.loginUser}>
           <label>Username
             <input type="text" onChange={this.changeUsername}
@@ -51,6 +66,7 @@ var SignInForm = React.createClass({
           </label>
           <input type="submit" value="Login" />
         </form>
+        <button onClick={this.guestLogin}>Login as a Guest</button>
         <button onClick={this.goToSignUp}>Sign Up</button>
       </div>
     );

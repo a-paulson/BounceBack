@@ -4,6 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      login!(@user)
       render :show
     else
       @errors = @user.errors.full_messages
@@ -17,6 +18,12 @@ class Api::UsersController < ApplicationController
       @errors = ["You are not logged in."]
       render :errors, status: 400
     end
+  end
+
+  def guest
+    @user = User.guest_user
+    login!(@user)
+    render :show
   end
 
   private

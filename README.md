@@ -82,11 +82,11 @@ Users Can:
 - [x] create `User` model
 - [x] create auth controllers model
 - [x] setup Webpack & Flux scaffold
-- [ ] Front end authentication
-- [ ] splash page
-- [ ] user signup/sign in pages
-- [ ] Guest Login
-- [ ] initial landing page after sign in
+- [x] Front end authentication
+- [x] sign in page
+- [x] sign up page
+- [x] Guest Login
+- [x] initial landing page after sign in
 - [x] Push to Heroku
 
 ### Phase 2: Basic Chat Implementation (2 days)
@@ -120,6 +120,7 @@ Users Can:
 **Objective:** Complete initial styling, bringing unified look and color to all pages.
 
 - [ ] create a basic style guide
+- [ ] Style and flesh out splash page
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
@@ -264,6 +265,7 @@ Make sure to reset seed Data!!!
           Inclusion constraint on user_type
 
           use browser history?
+          double confirm password
 
           Make sure to show a user that they are logged in and their credentials in upper left corner of the screen.
 

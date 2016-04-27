@@ -18,6 +18,8 @@ UserStore.getErrors = function(){
 UserStore.processErrors = function(errors){
   _authErrors = [];
   errors.forEach(function(errorObj){
+    errorObj.error = errorObj.error.replace("Fname", "First Name");
+    errorObj.error = errorObj.error.replace("Lname", "Last Name");
     _authErrors.push(errorObj.error);
   });
 };

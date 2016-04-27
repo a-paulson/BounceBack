@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, default: {format: :json } do
     resource :user, only: [:create, :show]
+    get "user/guest" => "users#guest"
     resource :session, only: [:create, :destroy]
   end
 
