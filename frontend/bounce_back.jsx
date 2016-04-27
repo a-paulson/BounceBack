@@ -10,6 +10,8 @@ var SignInForm = require('./components/signInForm');
 var MessageScreen = require('./components/messageScreen');
 var SignUpForm = require('./components/signUpForm');
 
+var ConversationApiUtil = require('./util/conversationApiUtil');
+
 var App = React.createClass({
   render: function() {
     return (

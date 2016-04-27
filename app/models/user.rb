@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 8, allow_nil: true}
   validates :email, :username, :session_token, uniqueness: true
 
+  has_many :messages
+  has_many :channels, through: :channel_users
+
   after_initialize :ensure_session_token
 
   attr_reader :password
@@ -23,7 +26,7 @@ class User < ActiveRecord::Base
       username = "Guest" + rand(10000).to_s.rjust(4, "0")
     end
     guest_user = User.create!(username: username, fname: "guest", lname: "guest",
-                              email: username, user_type: "guest", password_digest: "guest")    
+                              email: username, user_type: "guest", password_digest: "guest")
   end
 
   def reset_session_token!

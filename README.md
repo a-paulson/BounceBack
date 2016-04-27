@@ -80,6 +80,7 @@ Users Can:
 - [x] create `User` model
 - [x] create auth controllers model
 - [x] setup Webpack & Flux scaffold
+- [x] setup React Router
 - [x] Front end authentication
 - [x] sign in page
 - [x] sign up page
@@ -89,12 +90,14 @@ Users Can:
 
 ### Phase 2: Basic Chat Implementation (2 days)
 
-**Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users.
+**Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users. Also create channels to have a conversation to hold these messages.
 
-- [ ] create `Message` model
-- [ ] CRUD API for messages (`Messages`)
-- [ ] jBuilder views for messsages
-- [ ] Implement Flux loop for messages
+- [x] create `Message` model
+- [x] create `Channel` and `Channel Users` model
+- [ ] CRUD API for channels
+- [ ] jBuilder views for messages
+- [ ] jBuilder views for channels
+- [ ] Implement Flux loop for messages and channels
 - [ ] Create a React messageIndex with messageIndexItems to display messages
 - [ ] Create a React messageForm to create new messages
 - [ ] setup websockets for real time updates
@@ -103,11 +106,10 @@ Users Can:
 
 ### Phase 3: Channels and Direct Messages (2 days)
 
-**Objective:** Chats can be organized into channels and direct messages. These two types of conversations can be viewed, selected and manipulated by the user.
+**Objective:** Add direct messages. Allow direct messages and channels to bebe viewed, selected and manipulated by the user. Finish fleshing out react components on message screen. Examine allowing Channels and messages to share one controller and flux loop.
 
-- [ ] Create `Channel` and `Direct Message` models
+- [ ] Create `Direct Message` models
 - [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
 - [ ] Implement Flux loop for channels
 - [ ] Implement Flux loop for direct messages
 - [ ] Create React components to hold collections of conversations
