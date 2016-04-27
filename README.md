@@ -2,10 +2,9 @@
 
 [Heroku link][heroku]
 
-I plan to purchase the domain bounceback.work after this proposal is approved.
-It can be purchased here: https://www.1and1.com/
+I'm still setting up the custom domain name DNS but the site is live on Heroku.
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://bouncebackwork.herokuapp.com/
 
 ## Minimum Viable Product
 
@@ -88,7 +87,7 @@ Users Can:
 - [ ] user signup/sign in pages
 - [ ] Guest Login
 - [ ] initial landing page after sign in
-- [ ] Push to Heroku
+- [x] Push to Heroku
 
 ### Phase 2: Basic Chat Implementation (2 days)
 

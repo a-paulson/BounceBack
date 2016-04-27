@@ -1,14 +1,18 @@
 var React = require('react');
 var UserClientActions = require('../actions/user/userClientActions');
-var CurrentUserStateMixin = require('../mixins/currentUserState');
+// var CurrentUserStateMixin = require('../mixins/currentUserState');
 var hashHistory = require("react-router").hashHistory;
 
 var SignInForm = React.createClass({
-  mixins: [CurrentUserStateMixin],
+  // mixins: [CurrentUserStateMixin],
 
   getInitialState: function() {
     return {
       username: "",
+      fname: "",
+      lname: "",
+      email: "",
+      user_type: "",
       password: ""
     };
   },
@@ -27,15 +31,12 @@ var SignInForm = React.createClass({
   changePassword: function(event){
     this.setState({password: event.target.value});
   },
-  goToSignUp: function(event){
-    event.preventDefault();
-    hashHistory.push("/signup");
-  },
+
 
   render: function() {
-    if(this.state.currentUser !== undefined){
-      hashHistory.push("/messages");
-    }
+    // if(this.state.currentUser !== undefined){
+    //   hashHistory.push("/messages");
+    // }
     return (
       <div>
         <form onSubmit={this.loginUser}>

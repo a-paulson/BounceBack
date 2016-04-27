@@ -1,5 +1,6 @@
 var UserStore = require('../stores/userStore');
 var UserClientActions = require('../actions/user/userClientActions');
+var hashHistory = require('react-router').hashHistory;
 
 var CurrentUserStateMixin = {
   getInitialState: function(){
@@ -15,9 +16,16 @@ var CurrentUserStateMixin = {
     }
   },
 
+  componentWillUnmount: function() {
+    this.userListener.remove();
+  },
+
   updateUser: function(){
     this.setState({currentUser: UserStore.currentUser()});
     this.setState({userErrors: UserStore.getErrors()});
+    if (this.state.currentUser === undefined){
+      hashHistory.push("/");
+    }
   }
 
 };

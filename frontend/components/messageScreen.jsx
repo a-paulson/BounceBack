@@ -1,30 +1,26 @@
 var React = require('react');
 var CurrentUserStateMixin = require('../mixins/currentUserState');
 var UserClientActions = require("../actions/user/userClientActions");
-var HashHistory = require("react-router").hashHistory;
 
 var MessageScreen = React.createClass({
   mixins: [CurrentUserStateMixin],
-
-  componentWillMount: function() {
-    if(this.state.currentUser === undefined){
-      HashHistory.push("/");
-    }
-  },
 
   logout: function(event){
     event.preventDefault();
     UserClientActions.logout();
   },
 
+  componentDidMount: function() {
+    console.log("mount");
+    debugger;
+  },
+
   render: function() {
-    if(this.state.currentUser === undefined){
-      HashHistory.push("/");
-    }
+    var username = this.state.currentUser ? this.state.currentUser.username : "";
     return (
       <div>
         <h2>
-          {this.state.currentUser.username + " is logged in."}
+          {username + " is logged in."}
         </h2>
         <button onClick={this.logout}>Logout</button>
       </div>
