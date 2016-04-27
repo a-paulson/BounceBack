@@ -3,6 +3,7 @@ var UserClientActions = require('../actions/user/userClientActions');
 var hashHistory = require("react-router").hashHistory;
 var UserStore = require("../stores/userStore");
 var AuthError = require('../mixins/authError');
+var Select = require("react-select");
 
 var SignUpForm = React.createClass({
   mixins: [AuthError],
@@ -15,6 +16,7 @@ var SignUpForm = React.createClass({
       email: "",
       user_type: "user",
       password: "",
+      displayedOption: "user"
     };
   },
 
@@ -69,11 +71,22 @@ var SignUpForm = React.createClass({
     this.setState({password: event.target.value});
   },
 
+  changeUserType: function(val, option){
+    console.log(val);
+    this.setState({user_type: val.value, displayedOption: val.value});
+    console.log(this.state);
+  },
+
+  selectOptions: [{value: "user", label: "Jobseeker"},
+    {value: "recruiter", label: "Recruiter"}
+  ],
+
   render: function() {
+    var errors;
     if (this.state.errors.length === 0){
-      var errors = "";
+      errors = "";
     } else{
-      var errors = this.state.errors.map(function(error){
+      errors = this.state.errors.map(function(error){
         return <h4>{error}</h4>;
       });
     }
@@ -107,7 +120,10 @@ var SignUpForm = React.createClass({
             <input type="password" onChange={this.changePassword}
                value={this.state.password} />
           </label>
-          <p>{this.state.errorText}</p>
+          <Select name="userType"
+            value={this.state.displayedOption}
+            options={this.selectOptions}
+            onChange={this.changeUserType} />
           <input type="submit" value="Sign Up" />
         </form>
       </div>

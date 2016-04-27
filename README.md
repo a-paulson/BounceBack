@@ -92,12 +92,12 @@ Users Can:
 **Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users.
 
 - [ ] create `Message` model
-- [ ] CRUD API for notes (`Messages`)
+- [ ] CRUD API for messages (`Messages`)
 - [ ] jBuilder views for messsages
-- [ ] setup websockets for real time updates
 - [ ] Implement Flux loop for messages
 - [ ] Create a React messageIndex with messageIndexItems to display messages
 - [ ] Create a React messageForm to create new messages
+- [ ] setup websockets for real time updates
 - [ ] Test these in browser
 - [ ] Test these across multiple users
 
