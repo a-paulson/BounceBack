@@ -1,5 +1,3 @@
-require "SecureRandom"
-
 class User < ActiveRecord::Base
   validates :username, :fname, :lname, :email, :email, :user_type, :password_digest, :session_token, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
