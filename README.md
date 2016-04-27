@@ -1,10 +1,8 @@
 # Bounce Back
 
-[Heroku link][heroku]
+[BounceBack.wor][heroku]
 
-I'm still setting up the custom domain name DNS but the site is live on Heroku.
-
-[heroku]: https://bouncebackwork.herokuapp.com/
+[heroku]: https://bounceback.work/
 
 ## Minimum Viable Product
 
