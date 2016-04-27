@@ -1,6 +1,6 @@
 class Api::ConversationsController < ApplicationController
     def show
-      #@conversation = get_conversation()
+      @conversation = get_conversation
       render json: {answer: :yes}
     end
 
@@ -11,7 +11,8 @@ class Api::ConversationsController < ApplicationController
     def conversation_params
     end
 
-    def get_conversation(type, id)
+    def get_conversation
+      
     end
 
     def get_all_conversations

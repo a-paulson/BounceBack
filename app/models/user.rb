@@ -3,8 +3,13 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 8, allow_nil: true}
   validates :email, :username, :session_token, uniqueness: true
 
-  has_many :messages
-  has_many :channels, through: :channel_users
+  has_many(:messages,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Message)
+
+  has_many :conversation_users
+  has_many :conversations, through: :conversation_users
 
   after_initialize :ensure_session_token
 
