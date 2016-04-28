@@ -20,6 +20,14 @@ var ConversationClientActions = {
   deleteConversation: function(id){
     ConversationApiUtil.deleteConversation(id);
   },
+
+  subscribeToConversation: function(id){
+    ConversationApiUtil.subscribeToConversation(id);
+  },
+
+  unsubscribeFromConversation: function(id){
+    ConversationApiUtil.unsubscribeFromConversation(id);
+  },
 };
 
 window.ConversationClientActions = ConversationClientActions;

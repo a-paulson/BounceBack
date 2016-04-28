@@ -19,7 +19,6 @@ var ConversationApiUtil = {
       type:"GET",
       url:"api/conversations",
       success: function(conversations){
-        console.log(conversations);
         ConversationServerActions.receiveAllConversations(conversations);
       },
       error: function(errors){
@@ -70,6 +69,36 @@ var ConversationApiUtil = {
       }
     });
   },
+
+  subscribeToConversation: function(id){
+    $.ajax({
+      type:"POST",
+      url:"api/conversation_users",
+      dataType: "json",
+      data: {conversation_user: {conversation_id: id}},
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
+
+  unsubscribeFromConversation: function(id){
+    $.ajax({
+      type:"DELETE",
+      url:"api/conversation_users",
+      dataType: "json",
+      data: {conversation_user: {conversation_id: id}},
+      success: function(conversation){
+        ConversationServerActions.removeConversation(conversation.id);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  }
 };
 
 window.ConversationApiUtil = ConversationApiUtil;

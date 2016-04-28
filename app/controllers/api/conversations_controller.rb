@@ -4,9 +4,13 @@ class Api::ConversationsController < ApplicationController
     def show
       @conversation = Conversation.includes(messages: [:author]).find(params[:id])
       if @conversation.users.include?(current_user)
-        render :show
+        if @conversation.users.include?(current_user)
+          render :show
+        else
+          render json: {error: "You are not a member of this conversation."}, status: 400
+        end
       else
-        render json: {error: "You are not a member of this conversation."}, status: 400
+        render json: {errors: "You are not the subscribed to this conversation"}, status: 400
       end
     end
 
@@ -19,6 +23,7 @@ class Api::ConversationsController < ApplicationController
       @conversation = Conversation.new(conversation_params)
       @conversation.owner = current_user
       if @conversation.save
+        ConversationUser.create(conversation_id: @conversation.id, user_id: current_user.id)
         render :show
       else
         @errors = @conversation.errors.full_messages
@@ -44,7 +49,7 @@ class Api::ConversationsController < ApplicationController
       @conversation = Conversation.find(params[:id])
       if @conversation.owner == current_user
         @conversation.destroy
-        render :show
+        render status: 200
       else
         render json: {errors: "You are not the owner of this conversation"}, status: 400
       end

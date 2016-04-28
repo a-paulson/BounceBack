@@ -11,7 +11,7 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author = current_user
     if @message.save
-      redirect_to api_conversation(@message.conversation_id)
+      redirect_to api_conversation_url(@message.conversation_id)
     else
       @errors = @message.errors.full_messages
       render :errors, status: 400

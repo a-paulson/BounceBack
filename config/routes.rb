@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :conversations, only: [:show, :index, :create, :update, :destroy]
     resources :messages, only: [:create]
+    resources :conversation_users, only: [:create]
+    delete "conversation_users" => "conversation_users#destroy"
   end
 
 
