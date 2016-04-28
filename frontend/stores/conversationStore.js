@@ -8,7 +8,12 @@ var _conversationErrors = [];
 var ConversationStore = new Store(AppDispatcher);
 
 ConversationStore.all = function(){
-  return $.extend({}, _conversations);
+  // return $.extend({}, _conversations);
+  var conversations = [];
+  Object.keys(_conversations).forEach(function(key){
+    conversations.push(_conversations[key]);
+  });
+  return conversations;
 };
 
 ConversationStore.find = function(id){

@@ -9,9 +9,7 @@ var React = require("react"),
 var SignInForm = require('./components/signInForm');
 var MessageScreen = require('./components/messageScreen');
 var SignUpForm = require('./components/signUpForm');
-
-var ConversationStore = require('./stores/conversationStore');
-var ConversationClientActions = require('./actions/conversation/conversationClientActions');
+var MessagePane = require("./components/messagePane");
 
 var App = React.createClass({
   render: function() {
@@ -27,7 +25,9 @@ var App = React.createClass({
 var routes =(
   <Route path="/" component={App}>
     <IndexRoute component={SignInForm} />
-    <Route path="messages" component={MessageScreen} />
+    <Route path="messages" component={MessageScreen}>
+      <Route path=":conversationId" component={MessagePane} />
+    </Route>
     <Route path="signup" component={SignUpForm} />
   </Route>
 );

@@ -98,6 +98,21 @@ var ConversationApiUtil = {
         ConversationServerActions.receiveErrors(errors);
       }
     });
+  },
+
+  submitMessage: function(message){
+    $.ajax({
+      type:"POST",
+      url:"api/messages",
+      dataType: "json",
+      data: {message: message},
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
   }
 };
 

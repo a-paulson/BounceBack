@@ -28,6 +28,10 @@ var ConversationClientActions = {
   unsubscribeFromConversation: function(id){
     ConversationApiUtil.unsubscribeFromConversation(id);
   },
+
+  submitMessage: function(message){
+    ConversationApiUtil.submitMessage(message);
+  },
 };
 
 window.ConversationClientActions = ConversationClientActions;

@@ -33,6 +33,7 @@ var SignInForm = React.createClass({
   changePassword: function(event){
     this.setState({password: event.target.value});
   },
+  
   goToSignUp: function(event){
     event.preventDefault();
     hashHistory.push("/signup");

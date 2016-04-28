@@ -11,7 +11,7 @@ BounceBack is webchat application for job seeker. It offers a chance for users t
 - [ ] Account creation and user authentication
 - [ ] Realtime chat with both direct messages, one to one chat, and channels, multiperson chat
 - [ ] High quality seed data for channels and rudimentary chatbots for direct messaging
-- [ ] Hosting on Heroku with a custom domain name
+- [x] Hosting on Heroku with a custom domain name
 - [ ] A smooth bug free user experience
 - [ ] Appealing CSS styling
 - [ ] A production README with images and code snippets
