@@ -8,8 +8,8 @@
 
 User.create(username: "user", fname: "user", lname: "user", email: "user", user_type: "user", password: "password")
 User.create(username: "Andrew", fname: "Andrew", lname: "Andrew", email: "Andrew", user_type: "user", password: "password")
-User.create(username: "Ben", fname: "Ben", lname: "Ben", email: "Ben", user_type: "user", password: "password")
-User.create(username: "Gage", fname: "Gage", lname: "Gage", email: "Gage", user_type: "user", password: "password")
+User.create(username: "Kasper", fname: "Kasper", lname: "Kasper", email: "Kasper", user_type: "user", password: "password")
+User.create(username: "Reed", fname: "Reed", lname: "Reed", email: "Reed", user_type: "user", password: "password")
 
 Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 2)
 
