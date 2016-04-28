@@ -11,6 +11,7 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author = current_user
     if @message.save
+      Pusher.trigger('conversation_' + @message.conversation_id.to_s, 'new_message', {})
       redirect_to api_conversation_url(@message.conversation_id)
     else
       @errors = @message.errors.full_messages

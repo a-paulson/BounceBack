@@ -16,5 +16,5 @@
 /node_modules
 /app/assets/javascripts/bundle.js*
 
-#pusher keys
-config/initializers/pusher.rb
+# Ignore application configuration
+/config/application.yml
