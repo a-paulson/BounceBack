@@ -6,13 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: "user", fname: "user", lname: "user", email: "user", user_type: "user", password: "password")
 User.create(username: "Andrew", fname: "Andrew", lname: "Andrew", email: "Andrew", user_type: "user", password: "password")
-User.create(username: "Kasper", fname: "Kasper", lname: "Kasper", email: "Kasper", user_type: "user", password: "password")
-User.create(username: "Reed", fname: "Reed", lname: "Reed", email: "Reed", user_type: "user", password: "password")
+User.create(username: "user", fname: "user", lname: "user", email: "user", user_type: "user", password: "password")
+User.create(username: "user1", fname: "user1", lname: "user1", email: "user1", user_type: "user", password: "password")
+User.create(username: "user2", fname: "user2", lname: "user2", email: "user2", user_type: "user", password: "password")
+User.create(username: "user3", fname: "user3", lname: "user3", email: "user3", user_type: "user", password: "password")
 
-Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 2)
 
-ConversationUser.create(user_id: 1, conversation_id: 1)
+Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 1)
+
 ConversationUser.create(user_id: 2, conversation_id: 1)
+ConversationUser.create(user_id: 3, conversation_id: 1)
 ConversationUser.create(user_id: 4, conversation_id: 1)
+ConversationUser.create(user_id: 5, conversation_id: 1)
