@@ -5,6 +5,5 @@ class CreateConversations < ActiveRecord::Migration
       t.text :description, null: false
       t.timestamps null: false
     end
-    drop_table :channels
   end
 end
