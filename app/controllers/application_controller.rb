@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
+  def ensure_current_user!
+    unless(current_user)
+      render json: {error: "You are not logged in."}, status: 400
+    end
+  end
 end

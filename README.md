@@ -93,25 +93,21 @@ Users Can:
 **Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users. Also create channels to have a conversation to hold these messages.
 
 - [x] create `Message` model
-- [x] create `Channel` and `Channel Users` model
-- [ ] CRUD API for channels
+- [x] create `Conversation` and `ConversationUser` model
+- [x] CRUD API for conversations
 - [ ] jBuilder views for messages
-- [ ] jBuilder views for channels
-- [ ] Implement Flux loop for messages and channels
+- [x] jBuilder views for conversations
+- [ ] Implement Flux loop for messages and conversations
 - [ ] Create a React messageIndex with messageIndexItems to display messages
 - [ ] Create a React messageForm to create new messages
 - [ ] setup websockets for real time updates
 - [ ] Test these in browser
 - [ ] Test these across multiple users
 
-### Phase 3: Channels and Direct Messages (2 days)
+### Phase 3: Flesh Out Message Screen (1 days)
 
-**Objective:** Add direct messages. Allow direct messages and channels to bebe viewed, selected and manipulated by the user. Finish fleshing out react components on message screen. Examine allowing Channels and messages to share one controller and flux loop.
+**Objective:** Allow conversations to be viewed, selected and manipulated by the user. Finish fleshing out react components on message screen.
 
-- [ ] Create `Direct Message` models
-- [ ] setup the flux loop with skeleton files
-- [ ] Implement Flux loop for channels
-- [ ] Implement Flux loop for direct messages
 - [ ] Create React components to hold collections of conversations
 - [ ] Allow for user interaction with their list of conversations
 
@@ -259,13 +255,14 @@ Make sure to reset seed Data!!!
           Enforcing one account per email,
           Add account recovery if time.
 
-          Schwank auth?
+          Library auth?
           Allow to login with username or email
 
           Inclusion constraint on user_type
 
           use browser history?
           double confirm password
+          add multiple admins for a conversation
 
           Make sure to show a user that they are logged in and their credentials in upper left corner of the screen.
 

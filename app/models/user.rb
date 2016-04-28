@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   foreign_key: :author_id,
   class_name: :Message)
 
+  has_many(:owned_conversations,
+  primary_key: :id,
+  foreign_key: :owner_id,
+  class_name: :Conversation)
+
   has_many :conversation_users
   has_many :conversations, through: :conversation_users
 

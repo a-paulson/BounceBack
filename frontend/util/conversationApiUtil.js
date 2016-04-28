@@ -1,74 +1,75 @@
+var ConversationServerActions = require("../actions/conversation/conversationServerActions");
+
 var ConversationApiUtil = {
-  fetchConversation: function(conversation){
+  fetchConversation: function(id){
     $.ajax({
       type:"GET",
-      url:"api/conversations/" + conversation.id + "?type=" + conversation.type,
-      success: function(answer){
-        console.log(answer);
+      url:"api/conversations/" + id,
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
       }
-      // error: function(errors){
-      //
-      // }
     });
   },
 
-  // login: function(user){
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "api/session",
-  //     dataType: "json",
-  //     data: {user: user},
-  //     success: function(currentUser){
-  //
-  //     },
-  //     error: function(errors){
-  //
-  //     }
-  //   });
-  // },
-  //
-  // guestLogin: function(){
-  //   $.ajax({
-  //     type: "GET",
-  //     url: "api/user/guest",
-  //     dataType: "json",
-  //     success: function(currentUser){
-  //
-  //     },
-  //     error: function(errors){
-  //
-  //     }
-  //   });
-  // },
-  //
-  // logout: function(){
-  //   $.ajax({
-  //     type: "DELETE",
-  //     url: "api/session",
-  //     dataType: 'json',
-  //     success: function(user){
-  //
-  //     },
-  //     error: function(errors){
-  //
-  //     }
-  //   });
-  // },
-  //
-  // createUser: function(userData){
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "api/user",
-  //     dataType: "json",
-  //     data: {user: userData},
-  //     success: function(user){
-  //
-  //     },
-  //     error: function(errors){
-  //
-  //     }
-  //   });
-  // }
+  fetchAllConversations: function(){
+    $.ajax({
+      type:"GET",
+      url:"api/conversations",
+      success: function(conversations){
+        console.log(conversations);
+        ConversationServerActions.receiveAllConversations(conversations);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
+
+  createConversation: function(newConversation){
+    $.ajax({
+      type:"POST",
+      url:"api/conversations",
+      dataType: "json",
+      data: {conversation: newConversation},
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
+
+  editConversation: function(conversationUpdate){
+    $.ajax({
+      type:"PATCH",
+      url:"api/conversations/" + conversationUpdate.id,
+      dataType: "json",
+      data: {conversation: conversationUpdate},
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
+
+  deleteConversation: function(id){
+    $.ajax({
+      type:"DELETE",
+      url:"api/conversations/" + id,
+      success: function(){
+        ConversationServerActions.removeConversation(id);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
 };
 
 window.ConversationApiUtil = ConversationApiUtil;

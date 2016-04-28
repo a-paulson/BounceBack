@@ -17,7 +17,7 @@ class Api::UsersController < ApplicationController
     if @user.nil?
       #@errors = ["You are not logged in."]
       @errors = []
-      render :errors, status: 400
+      render :errors, status: 404
     end
   end
 

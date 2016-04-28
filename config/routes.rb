@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :user, only: [:create, :show]
     get "user/guest" => "users#guest"
     resource :session, only: [:create, :destroy]
-    resources :conversations, only: [:show, :index]
+    resources :conversations, only: [:show, :index, :create, :update, :destroy]
     resources :messages, only: [:create]
   end
 
