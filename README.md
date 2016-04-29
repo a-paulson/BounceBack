@@ -1,6 +1,6 @@
 # Bounce Back
 
-[BounceBack.work][heroku]
+[BounceBack.work][heroku] You can access the current test conversation by logging in with the username: user2 and password: password. Do not try to access the test conversation with the guest account. It is not connected to conversations yet.
 
 [heroku]: http://bounceback.work/
 
