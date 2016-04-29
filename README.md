@@ -8,9 +8,9 @@
 
 BounceBack is webchat application for job seeker. It offers a chance for users to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack and Glassdoor. BounceBack will be built using Ruby on Rails and React with Flux architecture. The minimum viable product will contain the following features:
 
-- [ ] Account creation and user authentication
-- [ ] Realtime chat with both direct messages, one to one chat, and channels, multiperson chat
-- [ ] High quality seed data for channels and rudimentary chatbots for direct messaging
+- [x] Account creation and user authentication
+- [x] Realtime chat organized into conversations
+- [ ] High quality seed data for conversations and rudimentary chatbots for direct messaging
 - [x] Hosting on Heroku with a custom domain name
 - [ ] A smooth bug free user experience
 - [ ] Appealing CSS styling
@@ -27,11 +27,10 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 Users Can:
 
-- [ ] Create a new account
-- [ ] Sign in and out using a new account, a demo account or an anonymous account
-- [ ] Post and read messages
-- [ ] Post to channels i.e group chats
-- [ ] Post direct messages to other users
+- [x] Create a new account
+- [x] Sign in and out using their account, or a guest account
+- [x] Post and read messages
+- [ ] Create and join conversations with other users
 - [ ] Interact with chatbots
 - [ ] Engage with a well styled and bug free app
 
@@ -57,7 +56,7 @@ Users Can:
 - [ ] Chat with me, a real human being
 - [ ] Chat on a mobile platform via a mobile app or mobile web site
 
-## Design Docs
+<!-- ## Design Docs
 * [View Wireframes][views]
 * [React Components][components]
 * [Flux Cycles][flux-cycles]
@@ -68,7 +67,7 @@ Users Can:
 [components]: ./docs/components.md
 [flux-cycles]: ./docs/flux-cycles.md
 [api-endpoints]: ./docs/api-endpoints.md
-[schema]: ./docs/schema.md
+[schema]: ./docs/schema.md -->
 
 ## Implementation Timeline
 
@@ -95,30 +94,31 @@ Users Can:
 - [x] create `Message` model
 - [x] create `Conversation` and `ConversationUser` model
 - [x] CRUD API for conversations
-- [ ] jBuilder views for messages
+- [x] jBuilder views for messages
 - [x] jBuilder views for conversations
-- [ ] Implement Flux loop for messages and conversations
-- [ ] Create a React messageIndex with messageIndexItems to display messages
-- [ ] Create a React messageForm to create new messages
-- [ ] setup websockets for real time updates
-- [ ] Test these in browser
-- [ ] Test these across multiple users
+- [x] Implement Flux loop for messages and conversations
+- [x] Create a React messageIndex with messageIndexItems to display messages
+- [x] Create a React messageForm to create new messages
+- [x] setup websockets for real time updates
+- [x] Test these in browser
+- [x] Test these across multiple users
 
-### Phase 3: Flesh Out Message Screen (1 days)
+### Phase 3: Initial Styling (1 days)
 
-**Objective:** Allow conversations to be viewed, selected and manipulated by the user. Finish fleshing out react components on message screen.
-
-- [ ] Create React components to hold collections of conversations
-- [ ] Allow for user interaction with their list of conversations
-
-### Phase 4: Initial Styling (1 days)
-
-**Objective:** Complete initial styling, bringing unified look and color to all pages.
+**Objective:** Complete initial styling, bringing unified look and color to all pages. I plan to use bootstrap to style the app.
 
 - [ ] create a basic style guide
 - [ ] Style and flesh out splash page
 - [ ] position elements on the page
 - [ ] add basic colors & styles
+
+### Phase 4: Finish converstion CRUD actions (1 days)
+
+**Objective:** Allow conversations to be viewed, selected and manipulated by the user. Finish fleshing out react components on message screen.
+
+- [ ] Finish react components for conversation CRUD actions
+- [ ] Debug conversation CRUD actions
+- [ ] Allow for conversation search and subscription
 
 ### Phase 5: Chatbots (.5 day)
 
@@ -127,21 +127,21 @@ Users Can:
 - Create very simple chatbot that will ask practice interview questions.
   - [ ] First version will use an array of data with random selection.
 
-### Phase 6: Demo Accounts (.5 days)
+### Phase 6: Guest Accounts (.5 days)
 
-**Objective:** Fully flesh out the demo account. Make sure initial user experience is smooth and bug free.
+**Objective:** Fully flesh out the guest account. Make sure initial user experience is smooth and bug free.
 
-- [ ] Create demo account feature
-- [ ] Provide appropriate default settings for demo account
+- [ ] Decide on and implement UX for guest accounts
+- [ ] Provide appropriate default settings for guest account
 - [ ] Do polishing of user experience so MVP experience is bug free and smooth.
 
 
 ### Phase 7: Seed Data (0.5 days)
 
-**objective:** Provide seed data for both bots and channels.
+**objective:** Provide seed data for both bots and conversations.
 
-- [ ] Add seed data to channels to flesh out contents
-- [ ] Implement multiple bots with different behavior to simulate various conversation types.
+- [ ] Add seed data to conversations to flesh out their contents
+- [ ] Implement multiple bots with different behavior to simulate various interactions.
 
 <!-- ### Phase 8: User Search (.5 day)
 
@@ -267,4 +267,22 @@ Make sure to reset seed Data!!!
           Make sure to show a user that they are logged in and their credentials in upper left corner of the screen.
 
           Persistent Login
+
+
+          Style Everything
+
+          This weekend pay Technical debt on front end auth
+            local storage
+            better mixin
+            fix the errors loggin in and out from child components
+            Figure out the default conversation UX
+
+          Also pay technical debt on Conversation creation and editing
+            Create conversations
+            Edit conversations
+            Delete conversations
+            Add users
+            Subscribe and unsubscribe
+            Search for users and conversations
+              Fuzzy search?
           -->
