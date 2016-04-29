@@ -1,4 +1,5 @@
 var React = require('react');
+var HashHistory = require('react-router').hashHistory;
 var ConversationIndexItem = require("./conversationIndexItem");
 var ConversationStore = require("../stores/conversationStore");
 var ConversationClientActions = require('../actions/conversation/conversationClientActions');
@@ -24,9 +25,13 @@ var ConversationIndex = React.createClass({
     this.setState({conversations: ConversationStore.all()});
   },
 
+  newConversation: function(event){
+    event.preventDefault();
+    HashHistory.push("/messages/new-conversation");
+  },
+
   generateConversationItems: function() {
     var conversations = this.state.conversations;
-    // debugger;
     if(conversations){
       return conversations.map(function(conversation){
           return <ConversationIndexItem conversation={conversation} key={conversation.id} />;
@@ -40,6 +45,7 @@ var ConversationIndex = React.createClass({
     return (
       <div>
         <p>Conversation Index</p>
+        <button onClick={this.newConversation}>Create a new Conversation</button>
         <ul>
           {this.generateConversationItems()}
         </ul>

@@ -2,7 +2,7 @@ class Api::ConversationsController < ApplicationController
     before_action :ensure_current_user!
 
     def show
-      @conversation = Conversation.includes(messages: [:author]).find(params[:id])
+      @conversation = Conversation.includes(:owner, messages: [:author]).find(params[:id])
       if @conversation.users.include?(current_user)
         if @conversation.users.include?(current_user)
           render :show
@@ -15,7 +15,7 @@ class Api::ConversationsController < ApplicationController
     end
 
     def index
-      @conversations = Conversation.joins(conversation_users: :user).where(users: {id: current_user.id});
+      @conversations = Conversation.joins(conversation_users: :user).where(users: {id: current_user.id}).includes(:owner);
       render :index
     end
 
@@ -23,7 +23,7 @@ class Api::ConversationsController < ApplicationController
       @conversation = Conversation.new(conversation_params)
       @conversation.owner = current_user
       if @conversation.save
-        ConversationUser.create(conversation_id: @conversation.id, user_id: current_user.id)
+        ConversationUser.create!(conversation_id: @conversation.id, user_id: current_user.id)
         render :show
       else
         @errors = @conversation.errors.full_messages
@@ -49,7 +49,8 @@ class Api::ConversationsController < ApplicationController
       @conversation = Conversation.find(params[:id])
       if @conversation.owner == current_user
         @conversation.destroy
-        render status: 200
+        # render nothing: true, status: 200
+        render json: {id: @conversation.id}, status: 200
       else
         render json: {errors: "You are not the owner of this conversation"}, status: 400
       end

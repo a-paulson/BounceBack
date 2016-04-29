@@ -10,6 +10,7 @@ var SignInForm = require('./components/signInForm');
 var MessageScreen = require('./components/messageScreen');
 var SignUpForm = require('./components/signUpForm');
 var MessagePane = require("./components/messagePane");
+var ConversationForm = require("./components/conversationForm");
 
 var App = React.createClass({
   render: function() {
@@ -26,7 +27,9 @@ var routes =(
   <Route path="/" component={App}>
     <IndexRoute component={SignInForm} />
     <Route path="messages" component={MessageScreen}>
+      <Route path=":conversationId/edit" component={ConversationForm} />
       <Route path=":conversationId" component={MessagePane} />
+      <Route path="new-conversation" component={ConversationForm} />
     </Route>
     <Route path="signup" component={SignUpForm} />
   </Route>

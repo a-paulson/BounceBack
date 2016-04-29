@@ -58,13 +58,16 @@ var ConversationApiUtil = {
   },
 
   deleteConversation: function(id){
+    console.log("AHHHHHH " + id);
     $.ajax({
       type:"DELETE",
       url:"api/conversations/" + id,
-      success: function(){
-        ConversationServerActions.removeConversation(id);
+      success: function(conversation){
+        console.log(conversation);
+        ConversationServerActions.removeConversation(conversation.id);
       },
       error: function(errors){
+        console.log(errors);
         ConversationServerActions.receiveErrors(errors);
       }
     });

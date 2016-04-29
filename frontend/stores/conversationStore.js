@@ -45,6 +45,8 @@ ConversationStore.__onDispatch = function(payload){
       break;
 
     case ConversationConstants.REMOVE_CONVERSATION:
+      var test = _conversations;
+      debugger;
       delete _conversations[payload.id];
       ConversationStore.__emitChange();
       break;

@@ -4,6 +4,7 @@ var MessageForm = require("./messageForm");
 var ConversationStore = require("../stores/conversationStore");
 var ConversationClientActions =
   require('../actions/conversation/conversationClientActions');
+var HashHistory = require("react-router").hashHistory;
 
 var MessagePane = React.createClass({
 
@@ -49,8 +50,15 @@ var MessagePane = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({conversation: ConversationStore.find(
-      parseInt(this.props.params.conversationId))});
+    var currentConversation = ConversationStore.find(
+      parseInt(this.props.params.conversationId));
+      debugger;
+    if (currentConversation){
+      this.setState({conversation: currentConversation});
+    } else{
+      HashHistory.push("/messages");
+    }
+
     // this.forceUpdate();
     // console.log("onChange");
   },

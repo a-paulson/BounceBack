@@ -13,11 +13,15 @@ class Api::ConversationUsersController < ApplicationController
 
   def destroy
     @cu = ConversationUser.where(user_id: current_user.id, conversation_id: cu_params[:conversation_id]).first
-    if @cu
-      @cu.destroy
-      render json: {id: @cu.conversation_id}
+    if (Conversation.find(@cu.conversation_id).owner == current_user)
+      render json: {error: "A user cannot unsubscribe from a conversation they own."}, status: 400
     else
-      render json: {error: "You are not subscribed to this conversation."}, status: 400
+      if @cu
+        @cu.destroy
+        render json: {id: @cu.conversation_id}
+      else
+        render json: {error: "You are not subscribed to this conversation."}, status: 400
+      end
     end
   end
 

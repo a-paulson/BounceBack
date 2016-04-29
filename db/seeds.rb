@@ -15,6 +15,7 @@ User.create(username: "user3", fname: "user3", lname: "user3", email: "user3", u
 
 Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 1)
 
+ConversationUser.create(user_id: 1, conversation_id: 1)
 ConversationUser.create(user_id: 2, conversation_id: 1)
 ConversationUser.create(user_id: 3, conversation_id: 1)
 ConversationUser.create(user_id: 4, conversation_id: 1)
