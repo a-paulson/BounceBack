@@ -42,13 +42,10 @@ var ConversationIndex = React.createClass({
   },
 
   render: function() {
+    console.log("render ConversationIndex");
     return (
       <div>
-        <p>Conversation Index</p>
-        <button onClick={this.newConversation}>Create a new Conversation</button>
-        <ul>
-          {this.generateConversationItems()}
-        </ul>
+        {this.generateConversationItems()}
       </div>
     );
   }

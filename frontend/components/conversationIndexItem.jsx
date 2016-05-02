@@ -5,7 +5,8 @@ var ConversationClientActions = require("../actions/conversation/conversationCli
 
 var ConversationIndexItem = React.createClass({
 
-  handleClick: function(){
+  handleClick: function(event){
+    event.preventDefault();
     HashHistory.push("/messages/" + this.props.conversation.id);
   },
 
@@ -37,11 +38,11 @@ var ConversationIndexItem = React.createClass({
   render: function() {
     var conversation = this.props.conversation;
       return (
-        <li onClick={this.handleClick}>
+        <a className="mdl-navigation__link" onClick={this.handleClick} href="">
           <h4>{conversation.title}</h4>
           <p>{conversation.description}</p>
           {this.manipulateConversation()}
-        </li>
+        </a>
       );
   }
 

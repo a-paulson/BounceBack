@@ -12,7 +12,8 @@ var CurrentUserStateMixin = {
     this.userListener = UserStore.addListener(this.updateUser);
     if(UserStore.currentUser() === undefined)
     {
-      UserClientActions.fetchCurrenUser();
+      console.log("client Action fetch currentUser");
+      UserClientActions.fetchCurrentUser();
     }
   },
 
@@ -23,9 +24,6 @@ var CurrentUserStateMixin = {
   updateUser: function(){
     this.setState({currentUser: UserStore.currentUser()});
     this.setState({userErrors: UserStore.getErrors()});
-    if (this.state.currentUser === undefined){
-      hashHistory.push("/");
-    }
   }
 
 };

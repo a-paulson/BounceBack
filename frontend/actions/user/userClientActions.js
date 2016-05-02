@@ -1,8 +1,8 @@
 var UserApiUtil = require("../../util/userApiUtil");
 
 var UserClientActions = {
-  fetchCurrenUser: function(){
-    UserApiUtil.fetchCurrenUser();
+  fetchCurrentUser: function(){
+    UserApiUtil.fetchCurrentUser();
   },
 
   login: function(user){

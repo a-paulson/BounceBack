@@ -17,7 +17,7 @@ var MessagePane = React.createClass({
 
   componentDidMount: function() {
     this.conversationListener = ConversationStore.addListener(this._onChange);
-    this.pusher = new Pusher('5846484f93e7e696b493', {
+    this.pusher = new Pusher("5846484f93e7e696b493", {
       encrypted: true
     });
 
@@ -52,7 +52,7 @@ var MessagePane = React.createClass({
   _onChange: function() {
     var currentConversation = ConversationStore.find(
       parseInt(this.props.params.conversationId));
-      debugger;
+      // debugger;
     if (currentConversation){
       this.setState({conversation: currentConversation});
     } else{
@@ -65,6 +65,7 @@ var MessagePane = React.createClass({
 
 
   render: function() {
+    console.log("render messagePane");
     var messages = this.state.conversation ? this.state.conversation.messages : undefined;
     // console.log("running rensder: " + messages);
     return (

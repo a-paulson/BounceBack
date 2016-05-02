@@ -268,8 +268,12 @@ Make sure to reset seed Data!!!
 
           Persistent Login
 
+          multi-tab conversations, make delete tabs
+
 
           Style Everything
+          Favicon
+          Go back and fully read and embrace google material design
 
           This weekend pay Technical debt on front end auth
             local storage

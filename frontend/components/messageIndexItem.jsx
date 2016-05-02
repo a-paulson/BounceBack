@@ -4,10 +4,10 @@ var MessageIndexItem = React.createClass({
 
   render: function() {
     return (
-      <li>
-        <p>{this.props.message.body}</p>
-        <p>{"By: " + this.props.message.author}</p>
-      </li>
+      <div className="mdl-card message-card">
+        <div className="mdl-card__supporting-text">{this.props.message.body}</div>
+        <div className="mdl-card__supporting-text">{"By: " + this.props.message.author}</div>
+      </div>
     );
   }
 

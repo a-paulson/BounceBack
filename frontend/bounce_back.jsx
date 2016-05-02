@@ -14,9 +14,9 @@ var ConversationForm = require("./components/conversationForm");
 
 var App = React.createClass({
   render: function() {
+    console.log("render App")
     return (
       <div>
-        <h2>App</h2>
         {this.props.children}
       </div>
     );

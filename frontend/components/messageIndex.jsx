@@ -15,12 +15,11 @@ var MessageIndex = React.createClass({
   },
 
   render: function() {
+    console.log("render messageIndex");
     return (
-      <div>
+      <div className="message-index">
         <p>Message Index</p>
-        <ul>
           {this.getMessageItems()}
-        </ul>
       </div>
     );
   }
