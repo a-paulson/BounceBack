@@ -1,14 +1,22 @@
 class UsersController < ApplicationController
 
+  def new
+    if current_user
+      redirect_to app_url
+    else
+      render :new
+    end
+  end
+
   def create
     @user = User.new(user_params)
-
+    @user.user_type = "user"
     if @user.save
       login!(@user)
-      render :show
+      redirect_to app_url
     else
       @errors = @user.errors.full_messages
-      render :errors, status: 400
+      render :new
     end
   end
 

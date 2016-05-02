@@ -16,6 +16,7 @@ class Api::SessionsController < ApplicationController
   def destroy
     @user = current_user;
     logout!
+    redirect_to app_url, status: 303     
   end
 
   # private

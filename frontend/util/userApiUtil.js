@@ -53,7 +53,8 @@ var UserApiUtil = {
         UserServerActions.removeCurrentUser();
       },
       error: function(errors){
-        UserServerActions.receiveErrors(errors.responseJSON);
+        location.reload();
+        // UserServerActions.receiveErrors(errors.responseJSON);
       }
     });
   },

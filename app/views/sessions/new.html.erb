@@ -6,7 +6,7 @@
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
 
-          <a class="mdl-navigation__link" href="">Sign Up</a>
+          <a class="mdl-navigation__link" href="/user/new">Sign Up</a>
           <a class="mdl-navigation__link" href="">Recruiters</a>
 
           <a class="mdl-navigation__link" href="">Contact</a>
@@ -52,12 +52,10 @@
         </div>
 
 
+        <% if @errors %>
+          <%= render "errors", errors: @errors %>
+        <% end %>
 
-
-            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" id="error-toast" class="mdl-snackbar mdl-js-snackbar">
-              <div class="mdl-snackbar__text"></div>
-              <button class="mdl-snackbar__action" type="button"></button>
-            </div>
           </div>
         </div>
         <footer class="mdl-mini-footer">

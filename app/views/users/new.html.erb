@@ -1,0 +1,78 @@
+<div class="bb-splash">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">BounceBack</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+
+          <a class="mdl-navigation__link" href="/user/new">Sign Up</a>
+          <a class="mdl-navigation__link" href="">Recruiters</a>
+
+          <a class="mdl-navigation__link" href="">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__content signin-bg">
+      <div class="page-content signin-content">
+
+
+        <div class="mdl-card signup-card mdl-shadow--2dp">
+          <form action="/user" method="POST">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">            <div class="mdl-card__supporting-text">
+              <div class="signin-signup-box">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" name="user[username]" pattern="^[a-zA-Z0-9]{1,15}$" id="login-username"/>
+             <label class="mdl-textfield__label" for="login-username">Username</label>
+               <span class="mdl-textfield__error">Letters and numbers only.</span>
+
+           </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" name="user[fname]" pattern="^[A-Za-z ,.'-]+$" id="login-fname"/>
+               <label class="mdl-textfield__label" for="login-fname">First Name</label>
+                 <span class="mdl-textfield__error">Invalid Character</span>
+           </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" name="user[lname]" pattern="^[A-Za-z ,.'-]+$" id="login-lname"/>
+               <label class="mdl-textfield__label" for="login-lname">Last Name</label>
+                 <span class="mdl-textfield__error">Invalid Character</span>
+           </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" name="user[email]" pattern="^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$" id="login-email"/>
+               <label class="mdl-textfield__label" for="login-email">Email</label>
+               <span class="mdl-textfield__error">Invalid Email</span>
+           </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" pattern="^[\S]{8,}$" type="password" name="user[password]" id="login-password"/>
+               <label class="mdl-textfield__label" for="login-password">Password</label>
+                 <span class="mdl-textfield__error">Your password must be at least 8 characters.</span>
+              </div>
+            </div>
+              <div class="mdl-card__actions signin-button-box">
+            <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored signin-card-button" type="submit" value="Sign Up" />
+              <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored signin-card-button" href="/">Go Back</a>
+            </div>
+            </div>
+          </form>
+        </div>
+
+        <% if @errors %>
+          <%= render "errors", errors: @errors %>
+        <% end %>
+
+          </div>
+        </div>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Title</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </div>
