@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  root to: "static_files#root"
+  root to: "sessions#new"
+  get "app" => "static_files#root"
+
+  resource :session, only: [:new, :create, :destroy]
+  resource :user, only: [:new, :create, :show]
+  get "user/guest" => "users#guest"
 
   namespace :api, default: {format: :json } do
-    resource :user, only: [:create, :show]
-    get "user/guest" => "users#guest"
-    resource :session, only: [:create, :destroy]
     resources :conversations, only: [:show, :index, :create, :update, :destroy]
     resources :messages, only: [:create]
     resources :conversation_users, only: [:create]

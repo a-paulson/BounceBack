@@ -1,0 +1,73 @@
+<div class="bb-splash">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">BounceBack</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+
+          <a class="mdl-navigation__link" href="">Sign Up</a>
+          <a class="mdl-navigation__link" href="">Recruiters</a>
+
+          <a class="mdl-navigation__link" href="">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__content signin-bg">
+      <div class="page-content signin-content">
+
+
+        <div class="mdl-card signin-card mdl-shadow--2dp">
+          <form action="/session" method="POST">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
+            <div class="mdl-card__supporting-text">
+              <div class="signin-input-box">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" name="user[username]" type="text" pattern="^[a-zA-Z0-9]{1,15}$" id="login-username"/>
+              <label class="mdl-textfield__label" for="login-username">Username</label>
+                <span class="mdl-textfield__error">Letters and numbers only.</span>
+           </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" name="user[password]" type="password" pattern="^[\S]{8,}$" id="login-password" />
+               <label class="mdl-textfield__label" for="login-password">Password</label>
+                 <span class="mdl-textfield__error">Your password must be at least 8 characters.</span>
+
+              </div>
+            </div>
+              <div class="mdl-card__actions signin-button-box">
+            <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored signin-card-button" type="submit" value="Login" />
+          </form>
+          <form action="/user/guest" method="GET">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored signin-card-button">Guest Login</button>
+          </form>
+            </div>
+            </div>
+        </div>
+
+
+
+
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" id="error-toast" class="mdl-snackbar mdl-js-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Title</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </div>

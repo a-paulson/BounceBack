@@ -25,12 +25,10 @@ var App = React.createClass({
 
 var routes =(
   <Route path="/" component={App}>
-    <IndexRoute component={SignInForm} />
-    <Route path="messages" component={MessageScreen}>
+    <IndexRoute component={MessageScreen} />
       <Route path=":conversationId/edit" component={ConversationForm} />
       <Route path=":conversationId" component={MessagePane} />
       <Route path="new-conversation" component={ConversationForm} />
-    </Route>
     <Route path="signup" component={SignUpForm} />
   </Route>
 );

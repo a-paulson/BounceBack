@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
   def guest
     @user = User.guest_user
     login!(@user)
-    render :show
+    redirect_to app_url
   end
 
   private
