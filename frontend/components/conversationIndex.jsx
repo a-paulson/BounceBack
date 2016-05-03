@@ -2,6 +2,7 @@ var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 var ConversationIndexItem = require("./conversationIndexItem");
 var ConversationStore = require("../stores/conversationStore");
+var UserStore = require("../stores/userStore");
 var ConversationClientActions = require('../actions/conversation/conversationClientActions');
 
 var ConversationIndex = React.createClass({
@@ -15,6 +16,21 @@ var ConversationIndex = React.createClass({
   componentDidMount: function() {
     this.conversationListener = ConversationStore.addListener(this._onChange);
     ConversationClientActions.fetchAllConversations();
+
+
+      this.pusher = new Pusher("5846484f93e7e696b493", {
+        encrypted: true
+      });
+
+      var self = this;
+
+      var channel = this.pusher.subscribe('conversation_' + UserStore.currentUser().user);
+      channel.bind('new_conversation', function(data) {
+        ConversationClientActions.fetchAllConversationsConversation();
+        console.log("pusher event triggered");
+      });
+      // console.log("cdm");
+
   },
 
   componentWillUnmount: function() {

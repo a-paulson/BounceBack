@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
     resources :conversation_users, only: [:create]
     delete "conversation_users" => "conversation_users#destroy"
+    resources :direct_messages, only: [:create]
   end
 
 

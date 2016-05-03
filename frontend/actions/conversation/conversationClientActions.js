@@ -35,7 +35,11 @@ var ConversationClientActions = {
 
   fetchSearchConversations: function(){
     ConversationApiUtil.fetchSearchConversations();
-  }
+  },
+
+  createDirectMessage: function(DMData){
+    ConversationApiUtil.createDirectMessage(DMData);
+  },
 };
 
 window.ConversationClientActions = ConversationClientActions;

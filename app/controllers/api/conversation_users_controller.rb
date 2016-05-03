@@ -27,6 +27,6 @@ class Api::ConversationUsersController < ApplicationController
 
   private
   def cu_params
-    params.require(:conversation_user).permit(:conversation_id)
+    params.require(:conversation_user).permit(:conversation_id, :user_id)
   end
 end

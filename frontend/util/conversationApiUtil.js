@@ -132,6 +132,21 @@ var ConversationApiUtil = {
       }
     });
   },
+
+  createDirectMessage: function(DMData){
+    $.ajax({
+      type:"POST",
+      url:"api/direct_messages",
+      dataType: "json",
+      data: {dm: DMData},
+      success: function(conversation){
+        ConversationServerActions.receiveConversation(conversation);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
 };
 
 window.ConversationApiUtil = ConversationApiUtil;

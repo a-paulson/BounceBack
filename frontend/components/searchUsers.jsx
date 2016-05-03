@@ -1,6 +1,7 @@
 var React = require('react');
 var UserStore = require('../stores/userStore');
 var UserClientActions = require('../actions/user/userClientActions');
+var ConversationClientActions = require('../actions/conversation/conversationClientActions');
 
 var searchUsers = React.createClass({
   getInitialState: function(){
@@ -33,10 +34,15 @@ var searchUsers = React.createClass({
     this.setState({query: title});
   },
 
-  subscribe: function(id, event){
+  chatWith: function(id, username, event){
     event.preventDefault();
-    UserClientActions.subscribeToConversation(id);
-    UserClientActions.fetchSearchUsers();
+    var currentUser = UserStore.currentUser().user;
+    ConversationClientActions.createDirectMessage({
+      title: "Direct Message between " + currentUser + " and " + username,
+      description: "Direct Message between " + currentUser + " and " + username,
+      private: true,
+      user_id: id
+    });
   },
 
   render: function () {
@@ -63,7 +69,7 @@ var searchUsers = React.createClass({
       return(
         <li onClick={this.lockInput.bind(this, user.username)} key={user.id}>
           {user.username}
-          <button onClick={this.subscribe.bind(this, user.id)} >Subscribe</button>
+          <button onClick={this.chatWith.bind(this, user.id, user.username)}>Chat with this user.</button>
         </li>);
     }.bind(this));
 
