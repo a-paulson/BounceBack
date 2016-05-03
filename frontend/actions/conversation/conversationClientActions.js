@@ -32,6 +32,10 @@ var ConversationClientActions = {
   submitMessage: function(message){
     ConversationApiUtil.submitMessage(message);
   },
+
+  fetchSearchConversations: function(){
+    ConversationApiUtil.fetchSearchConversations();
+  }
 };
 
 window.ConversationClientActions = ConversationClientActions;

@@ -9,23 +9,16 @@ var React = require("react"),
 var MessageScreen = require('./components/messageScreen');
 var MessagePane = require("./components/messagePane");
 var ConversationForm = require("./components/conversationForm");
-
-var App = React.createClass({
-  render: function() {
-    console.log("render App")
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-});
+var SearchConversations = require("./components/searchConversations");
+var SearchUsers = require("./components/searchUsers");
 
 var routes =(
   <Route path="/" component={MessageScreen}>
-      <Route path="conversation/:conversationId/edit" component={ConversationForm} />
+      <Route path="messages/:conversationId/edit" component={ConversationForm} />
       <Route path="messages/:conversationId" component={MessagePane} />
       <Route path="new-conversation" component={ConversationForm} />
+      <Route path="search-conversations" component={SearchConversations} />
+      <Route path="search-users" component={SearchUsers} />
   </Route>
 );
 

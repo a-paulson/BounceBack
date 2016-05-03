@@ -3,6 +3,7 @@ var Store = require("flux/utils").Store;
 var ConversationConstants = require("../constants/conversationConstants");
 
 var _conversations = {};
+var _searchConversations = {};
 var _conversationErrors = [];
 
 var ConversationStore = new Store(AppDispatcher);
@@ -12,6 +13,15 @@ ConversationStore.all = function(){
   var conversations = [];
   Object.keys(_conversations).forEach(function(key){
     conversations.push(_conversations[key]);
+  });
+  return conversations;
+};
+
+ConversationStore.searchConversations = function(){
+  // return $.extend({}, _conversations);
+  var conversations = [];
+  Object.keys(_searchConversations).forEach(function(key){
+    conversations.push(_searchConversations[key]);
   });
   return conversations;
 };
@@ -44,10 +54,14 @@ ConversationStore.__onDispatch = function(payload){
       ConversationStore.__emitChange();
       break;
 
+    case ConversationConstants.RECEIVE_SEARCH_CONVERSATIONS:
+      _searchConversations = payload.conversations;
+      ConversationStore.__emitChange();
+      break;
+
     case ConversationConstants.REMOVE_CONVERSATION:
       var test = _conversations;
-      debugger;
-      delete _conversations[payload.id];
+      delete _conversations[payload.conversation];
       ConversationStore.__emitChange();
       break;
 

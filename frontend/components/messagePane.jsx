@@ -43,7 +43,7 @@ var MessagePane = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     ConversationClientActions.fetchConversation(
       parseInt(nextProps.params.conversationId));
     // console.log("cwrp");
@@ -56,7 +56,7 @@ var MessagePane = React.createClass({
     if (currentConversation){
       this.setState({conversation: currentConversation});
     } else{
-      HashHistory.push("/messages");
+      HashHistory.push("/");
     }
 
     // this.forceUpdate();

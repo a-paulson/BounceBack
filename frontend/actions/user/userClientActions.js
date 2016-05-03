@@ -20,6 +20,10 @@ var UserClientActions = {
   createUser: function(userData){
     UserApiUtil.createUser(userData);
   },
+
+  fetchSearchUsers: function(){
+    UserApiUtil.fetchSearchUsers();
+  },
 };
 
 window.UserClientActions = UserClientActions;

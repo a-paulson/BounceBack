@@ -13,7 +13,7 @@ User.create(username: "user2", fname: "user2", lname: "user2", email: "user2", u
 User.create(username: "user3", fname: "user3", lname: "user3", email: "user3", user_type: "user", password: "password")
 
 
-Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 1)
+Conversation.create(title: "Test Conversation", description: "Test Conversation", owner_id: 1, private: false)
 
 ConversationUser.create(user_id: 1, conversation_id: 1)
 ConversationUser.create(user_id: 2, conversation_id: 1)

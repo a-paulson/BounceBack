@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   namespace :api, default: {format: :json } do
     resource :session, only: [:destroy]
     resource :user, only: [:show]
+    get "search_users" => 'users#search_index'
     resources :conversations, only: [:show, :index, :create, :update, :destroy]
+    get "search_conversations" => "conversations#search_index"
     resources :messages, only: [:create]
     resources :conversation_users, only: [:create]
     delete "conversation_users" => "conversation_users#destroy"

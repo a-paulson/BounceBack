@@ -11,7 +11,7 @@ var ConversationIndexItem = React.createClass({
   },
 
   manipulateConversation: function() {
-    if(UserStore.currentUser().username === this.props.conversation.owner){
+    if(UserStore.currentUser().user === this.props.conversation.owner){
       return(
         <div>
           <button onClick={this.deleteConversation}>
@@ -21,7 +21,7 @@ var ConversationIndexItem = React.createClass({
         </div>
       );
     } else{
-      return null;
+      return <button onClick={this.unsubscribe}>unsubscribe</button>;
     }
   },
 
@@ -32,17 +32,28 @@ var ConversationIndexItem = React.createClass({
 
   editConversation: function(event){
     event.preventDefault();
-    HashHistory.push("/messages/" + this.props.conversation.id + "/edit");
+    // debugger;
+    console.log("messages/" + this.props.conversation.id + "/edit");
+    HashHistory.push("messages/" + this.props.conversation.id + "/edit");
+    // HashHistory.push("/");
+  },
+
+  unsubscribe: function(event){
+    event.preventDefault();
+    ConversationClientActions.unsubscribeFromConversation(this.props.conversation.id);
+    ConversationClientActions.fetchSearchConversations();
   },
 
   render: function() {
     var conversation = this.props.conversation;
       return (
-        <a className="mdl-navigation__link" onClick={this.handleClick} href="">
-          <h4>{conversation.title}</h4>
-          <p>{conversation.description}</p>
+        <div>
+          <a className="mdl-navigation__link" onClick={this.handleClick} href="">
+            <h4>{conversation.title}</h4>
+            <p>{conversation.description}</p>
+          </a>
           {this.manipulateConversation()}
-        </a>
+        </div>
       );
   }
 

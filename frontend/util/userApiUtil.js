@@ -73,6 +73,19 @@ var UserApiUtil = {
       }
     });
   },
+
+  fetchSearchUsers: function(){
+    $.ajax({
+      type:"GET",
+      url:"api/search_users",
+      success: function(users){
+        UserServerActions.receiveSearchUsers(users);
+      },
+      error: function(errors){
+        UserServerActions.receiveErrors(errors.responseJSON);
+      }
+    });
+  }
 };
 
 module.exports = UserApiUtil;

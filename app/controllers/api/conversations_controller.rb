@@ -19,6 +19,23 @@ class Api::ConversationsController < ApplicationController
       render :index
     end
 
+    def search_index
+      # @conversations = Conversation.where(private: false).joins(conversation_users: :user).where('user_id NOT IN (?)', [current_user.id]);
+      @conversations = Conversation.find_by_sql(<<-SQL)
+        SELECT "conversations".*
+        FROM "conversations"
+        LEFT OUTER JOIN (
+          SELECT *
+          FROM "conversation_users"
+          WHERE "user_id" = #{current_user.id}
+        ) AS CU
+        ON CU."conversation_id" = "conversations"."id"
+        WHERE "conversations"."private" = false
+        AND CU."id" IS NULL
+      SQL
+      render :search_index
+    end
+
     def create
       @conversation = Conversation.new(conversation_params)
       @conversation.owner = current_user
@@ -58,6 +75,6 @@ class Api::ConversationsController < ApplicationController
 
     private
     def conversation_params
-      params.require(:conversation).permit(:title, :description)
+      params.require(:conversation).permit(:title, :description, :private)
     end
 end

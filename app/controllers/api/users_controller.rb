@@ -7,4 +7,9 @@ class Api::UsersController < ApplicationController
       render :errors, status: 404
     end
   end
+
+  def search_index
+    @users = User.where("id != ?", [current_user.id])
+    render :search_index
+  end
 end

@@ -1,4 +1,5 @@
 var ConversationServerActions = require("../actions/conversation/conversationServerActions");
+var HashHistory = require("react-router").hashHistory;
 
 var ConversationApiUtil = {
   fetchConversation: function(id){
@@ -37,6 +38,7 @@ var ConversationApiUtil = {
         ConversationServerActions.receiveConversation(conversation);
       },
       error: function(errors){
+        console.log(errors);
         ConversationServerActions.receiveErrors(errors);
       }
     });
@@ -116,7 +118,20 @@ var ConversationApiUtil = {
         ConversationServerActions.receiveErrors(errors);
       }
     });
-  }
+  },
+
+  fetchSearchConversations: function(){
+    $.ajax({
+      type:"GET",
+      url:"api/search_conversations",
+      success: function(conversations){
+        ConversationServerActions.receiveSearchConversations(conversations);
+      },
+      error: function(errors){
+        ConversationServerActions.receiveErrors(errors);
+      }
+    });
+  },
 };
 
 window.ConversationApiUtil = ConversationApiUtil;

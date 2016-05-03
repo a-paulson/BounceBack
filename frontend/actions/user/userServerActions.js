@@ -8,6 +8,12 @@ var UserServerActions = {
       user: user
     });
   },
+  receiveSearchUsers: function(users){
+    AppDispatcher.dispatch({
+      actionType: UserConstants.RECEIVE_SEARCH_USERS,
+      users: users
+    });
+  },
 
   removeCurrentUser: function(user){
     AppDispatcher.dispatch({

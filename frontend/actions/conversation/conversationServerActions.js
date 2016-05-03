@@ -16,6 +16,13 @@ var ConversationServerActions = {
     });
   },
 
+  receiveSearchConversations: function(conversations){
+    AppDispatcher.dispatch({
+      actionType: ConversationConstants.RECEIVE_SEARCH_CONVERSATIONS,
+      conversations: conversations
+    });
+  },
+
   removeConversation: function(conversation){
     AppDispatcher.dispatch({
       actionType: ConversationConstants.REMOVE_CONVERSATION,
