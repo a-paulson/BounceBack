@@ -24,10 +24,11 @@ var ConversationIndex = React.createClass({
 
       var self = this;
 
-      var channel = this.pusher.subscribe('conversation_' + UserStore.currentUser().user);
+      var channel = this.pusher.subscribe('user_' + UserStore.currentUser().user);
       channel.bind('new_conversation', function(data) {
-        ConversationClientActions.fetchAllConversationsConversation();
         console.log("pusher event triggered");
+        ConversationClientActions.fetchAllConversations();
+        console.log("fetch sent");
       });
       // console.log("cdm");
 
@@ -39,6 +40,8 @@ var ConversationIndex = React.createClass({
 
   _onChange: function() {
     this.setState({conversations: ConversationStore.all()});
+    console.log("onChange in conversation Index");
+    console.log(this.state.conversations);
   },
 
   newConversation: function(event){

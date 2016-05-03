@@ -63,9 +63,14 @@ class Api::ConversationsController < ApplicationController
     end
 
     def destroy
+      # debugger
       @conversation = Conversation.find(params[:id])
       if @conversation.owner == current_user
+        users = @conversation.users.to_a
         @conversation.destroy
+        users.each do |user|
+          Pusher.trigger('user_' + user.username, 'new_conversation', {})
+        end
         # render nothing: true, status: 200
         render json: {id: @conversation.id}, status: 200
       else

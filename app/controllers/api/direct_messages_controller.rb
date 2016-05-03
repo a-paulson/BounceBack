@@ -6,7 +6,8 @@ class Api::DirectMessagesController < ApplicationController
     if @conversation.save
       ConversationUser.create!(conversation_id: @conversation.id, user_id: current_user.id)
       ConversationUser.create!(conversation_id: @conversation.id, user_id: other_user[:user_id])
-      Pusher.trigger('user_' + other_user[:user_id], 'new_conversation', {})
+
+      Pusher.trigger('user_' + User.find(other_user[:user_id]).username, 'new_conversation', {})
       render "api/conversations/show"
     else
       @errors = @conversation.errors.full_messages
