@@ -13,15 +13,22 @@ var ConversationIndexItem = React.createClass({
   manipulateConversation: function() {
     if(UserStore.currentUser().user === this.props.conversation.owner){
       return(
-        <div>
-          <button onClick={this.deleteConversation}>
+        <div className="conversation-button-box">
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored conversation-button"
+            onClick={this.deleteConversation}>
             Delete Conversation
           </button>
-          <button onClick={this.editConversation}>Edit Conversation</button>
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored conversation-button"
+            onClick={this.editConversation}>Edit Conversation</button>
         </div>
       );
     } else{
-      return <button onClick={this.unsubscribe}>unsubscribe</button>;
+      return(
+        <div className="conversation-button-box">
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored unsubscribe-button"
+          onClick={this.unsubscribe}>unsubscribe</button>
+        </div>
+      );
     }
   },
 
@@ -49,7 +56,7 @@ var ConversationIndexItem = React.createClass({
       return (
         <div>
           <a className="mdl-navigation__link" onClick={this.handleClick} href="">
-            <h4>{conversation.title}</h4>
+            <h5>{conversation.title}</h5>
             <p>{conversation.description}</p>
           </a>
           {this.manipulateConversation()}

@@ -8,4 +8,10 @@ class StaticFilesController < ApplicationController
     end
   end
 
+  def splash
+  end
+
+  def recruiter
+  end
+
 end

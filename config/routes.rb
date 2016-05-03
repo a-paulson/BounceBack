@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: "sessions#new"
+  root to: "static_files#splash"
+
   get "app" => "static_files#root"
+  get "recruiter" => "static_files#recruiter"
+
 
   resource :session, only: [:new, :create, :destroy]
   resource :user, only: [:new, :create]

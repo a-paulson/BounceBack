@@ -63,15 +63,17 @@ var MessageScreen = React.createClass({
     return (
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div className="mdl-layout__drawer">
-              <h2>
-                {username + " is logged in."}
-              </h2>
-              <button onClick={this.logout}>Logout</button>
-              <span className="mdl-layout-title">Conversation Index</span>
+                  <h3><i className="material-icons md-36">&#xE853;</i>{username}</h3>
+              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                onClick={this.logout}>Logout</button>
+              <span className="mdl-layout-title">Conversations</span>
               <nav className="mdl-navigation">
-                <button onClick={this.newConversation}>Create a new Conversation</button>
-                <button onClick={this.searchConversations}>Search Conversations</button>
-                <button onClick={this.searchUsers}>Search Users</button>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                  onClick={this.newConversation}>Create a new Conversation</button>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                  onClick={this.searchConversations}>Search Conversations</button>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                  onClick={this.searchUsers}>Search Users</button>
                 <br></br>
                 <ConversationIndex />
               </nav>
