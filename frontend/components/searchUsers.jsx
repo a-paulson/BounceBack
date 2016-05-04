@@ -18,9 +18,9 @@ var searchUsers = React.createClass({
     this.userListener.remove();
   },
 
-  componentWillReceiveProps: function(){
-    UserClientActions.fetchSearchUsers();
-  },
+  // componentWillReceiveProps: function(){
+  //   UserClientActions.fetchSearchUsers();
+  // },
 
   onChange: function(){
     this.setState({searchUsers: UserStore.getSearchUsers()});
@@ -43,11 +43,13 @@ var searchUsers = React.createClass({
       private: true,
       user_id: id
     });
+    this.props.onFinish(event);
   },
 
   render: function () {
     if(this.state.query === ""){
-      var searchRegEx = new RegExp("^$");
+      // var searchRegEx = new RegExp("^$");
+      var searchRegEx = new RegExp("");
     } else{
       var queryChars = this.state.query.toLowerCase().split("");
       var regexString = ["^.*"];

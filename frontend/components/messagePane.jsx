@@ -26,13 +26,11 @@ var MessagePane = React.createClass({
     var channel = this.pusher.subscribe('conversation_' +
       this.props.params.conversationId);
     channel.bind('new_message', function(data) {
-      ConversationClientActions.fetchConversation(
-        parseInt(self.props.params.conversationId));
+      ConversationClientActions.fetchConversation(parseInt(self.props.params.conversationId));
     });
-
-    ConversationClientActions.fetchConversation(
-      parseInt(this.props.params.conversationId));
-    // console.log("cdm");
+    ConversationClientActions.fetchConversation(parseInt(this.props.params.conversationId));
+    console.log("MessagePane cdm");
+    console.log(this.props.params.conversationId);
   },
 
   componentWillUnmount: function() {
@@ -43,10 +41,10 @@ var MessagePane = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    // console.log(nextProps);
+    console.log(nextProps);
     ConversationClientActions.fetchConversation(
       parseInt(nextProps.params.conversationId));
-    // console.log("cwrp");
+    console.log("cwrp");
   },
 
   _onChange: function() {
@@ -60,7 +58,7 @@ var MessagePane = React.createClass({
     }
 
     // this.forceUpdate();
-    // console.log("onChange");
+    console.log("MessagePane onChange");
   },
 
 

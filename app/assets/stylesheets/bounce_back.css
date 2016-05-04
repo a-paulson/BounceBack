@@ -114,7 +114,7 @@
 
 
 .side-nav-button{
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
@@ -132,6 +132,32 @@
 }
 .unsubscribe-button{
   width: 80%;
+}
+
+.left-nav-subsection{
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-nav-navigation{
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+}
+
+
+#right-nav-bar-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#left-side-nav-bar{
+  left: 100%;
+  -webkit-transform: translateX(-240px);
+   transform: translateX(-240px);
 }
 
 /*.mdl-layout__drawer{

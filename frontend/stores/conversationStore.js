@@ -34,6 +34,14 @@ ConversationStore.getErrors = function(){
   return _conversationErrors.slice();
 };
 
+ConversationStore.processAllConversations = function(conversations){
+  Object.keys(conversations).forEach(function(key){
+    if(_conversations[key] === undefined){
+      _conversations[key] = conversations[key];
+    }
+  });
+};
+
 ConversationStore.processErrors = function(errors){
   _conversationErrors = [];
   errors.forEach(function(errorObj){
@@ -50,7 +58,7 @@ ConversationStore.__onDispatch = function(payload){
       break;
 
     case ConversationConstants.RECEIVE_ALL_CONVERSATIONS:
-      _conversations = payload.conversations;
+      ConversationStore.processAllConversations(payload.conversations);
       ConversationStore.__emitChange();
       break;
 

@@ -5,13 +5,19 @@ var MessagePane = require("./messagePane");
 var ConversationIndex = require("./conversationIndex");
 var HashHistory = require('react-router').hashHistory;
 
+var ConversationForm = require("./conversationForm");
+var SearchConversations = require("./searchConversations");
+var SearchUsers = require("./searchUsers");
+
 
 var MessageScreen = React.createClass({
   getInitialState: function(){
     console.log("initial state");
     console.log(UserStore.currentUser());
 
-    return {currentUser: UserStore.currentUser()};
+    return {currentUser: UserStore.currentUser(),
+            child: "none",
+            conversationId: undefined};
   },
 
 
@@ -42,17 +48,30 @@ var MessageScreen = React.createClass({
 
   newConversation: function(event){
     event.preventDefault();
-    HashHistory.push("new-conversation");
+    // HashHistory.push("new-conversation");
+    this.setState({child: "new-conversation"});
+  },
+
+  editConversation: function(conversationId){
+    this.setState({child: "new-conversation", conversationId: conversationId});
   },
 
   searchConversations: function(event){
+    console.log("serachConversations clicked");
     event.preventDefault();
-    HashHistory.push("search-conversations");
+    // HashHistory.push("search-conversations");
+    this.setState({child: "search-conversations"});
   },
 
   searchUsers: function(event){
     event.preventDefault();
-    HashHistory.push("search-users");
+    // HashHistory.push("search-users");
+    this.setState({child: "search-users"});
+  },
+
+  resetNavBar: function(event){
+    event.preventDefault();
+    this.setState({child: "none", conversationId: undefined});
   },
 
   render: function() {
@@ -60,27 +79,83 @@ var MessageScreen = React.createClass({
     console.log(this.state.currentUser);
     console.log(this.props.children);
     var username = this.state.currentUser ? this.state.currentUser.user : "";
+
+    var child =  null;
+
+    switch (this.state.child) {
+      case "new-conversation":
+        child = (
+          <div className="left-nav-subsection">
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+              onClick={this.resetNavBar}>
+              Close
+            </button>
+            <ConversationForm conversationId={this.state.conversationId} onFinish={this.resetNavBar}/>
+          </div>
+        );
+        break;
+
+      case "search-conversations":
+        child = (
+          <div className="left-nav-subsection">
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+              onClick={this.resetNavBar}>
+              Close
+            </button>
+            <SearchConversations onFinish={this.resetNavBar} />
+          </div>
+        );
+        break;
+
+      case "search-users":
+        child = (
+          <div className="left-nav-subsection">
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+              onClick={this.resetNavBar}>
+              Close
+            </button>
+            <SearchUsers onFinish={this.resetNavBar} />
+          </div>
+        );
+        break;
+
+      default:
+      child = null;
+    }
+
+    console.log(child);
+
     return (
+      <div>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div className="mdl-layout__drawer">
                   <h3><i className="material-icons md-36">&#xE853;</i>{username}</h3>
               <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
                 onClick={this.logout}>Logout</button>
-              <span className="mdl-layout-title">Conversations</span>
-              <nav className="mdl-navigation">
+              <nav className="mdl-navigation left-nav-navigation">
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
-                  onClick={this.newConversation}>Create a new Conversation</button>
+                  onClick={this.newConversation}>New Conversation</button>
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
                   onClick={this.searchConversations}>Search Conversations</button>
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
                   onClick={this.searchUsers}>Search Users</button>
-                <br></br>
-                <ConversationIndex />
+
+                {child}
               </nav>
             </div>
-            <main className="mdl-layout__content">
-              <div className="page-content">{this.props.children}</div>
+            <main className="mdl-layout__content" id="right-nav-bar-content">
+
+                  <div className="page-content">{this.props.children}</div>
+
             </main>
+          </div>
+          <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div className="mdl-layout__drawer" id="left-side-nav-bar">
+              <nav className="mdl-navigation">
+                <ConversationIndex editConversation={this.editConversation}/>
+              </nav>
+            </div>
+          </div>
           </div>
     );
   }

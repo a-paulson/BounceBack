@@ -16,9 +16,9 @@ var routes =(
   <Route path="/" component={MessageScreen}>
       <Route path="messages/:conversationId/edit" component={ConversationForm} />
       <Route path="messages/:conversationId" component={MessagePane} />
-      <Route path="new-conversation" component={ConversationForm} />
-      <Route path="search-conversations" component={SearchConversations} />
-      <Route path="search-users" component={SearchUsers} />
+      // <Route path="new-conversation" component={ConversationForm} />
+      // <Route path="search-conversations" component={SearchConversations} />
+      // <Route path="search-users" component={SearchUsers} />
   </Route>
 );
 

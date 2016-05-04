@@ -52,8 +52,9 @@ var ConversationIndex = React.createClass({
   generateConversationItems: function() {
     var conversations = this.state.conversations;
     if(conversations){
+      var self = this;
       return conversations.map(function(conversation){
-          return <ConversationIndexItem conversation={conversation} key={conversation.id} />;
+          return <ConversationIndexItem editConversation={self.props.editConversation} conversation={conversation} key={conversation.id} />;
       });
     } else{
       return [];

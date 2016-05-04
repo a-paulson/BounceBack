@@ -4,11 +4,13 @@ var ConversationClientActions = require('../actions/conversation/conversationCli
 
 var searchConversations = React.createClass({
   getInitialState: function(){
+    console.log("SearchConversations gis");
     return {query: "",
             searchConversations: ConversationStore.searchConversations()};
   },
 
   componentDidMount: function() {
+    console.log("SearchConversations cdm");
     this.conversationListener = ConversationStore.addListener(this.onChange);
     ConversationClientActions.fetchSearchConversations();
   },
@@ -37,11 +39,13 @@ var searchConversations = React.createClass({
     event.preventDefault();
     ConversationClientActions.subscribeToConversation(id);
     ConversationClientActions.fetchSearchConversations();
+    this.props.onFinish(event);
   },
 
   render: function () {
     if(this.state.query === ""){
-      var searchRegEx = new RegExp("^$");
+      // var searchRegEx = new RegExp("^$");
+      var searchRegEx = new RegExp("");
     } else{
       var queryChars = this.state.query.toLowerCase().split("");
       var regexString = ["^.*"];

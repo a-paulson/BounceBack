@@ -41,8 +41,9 @@ var ConversationIndexItem = React.createClass({
     event.preventDefault();
     // debugger;
     console.log("messages/" + this.props.conversation.id + "/edit");
-    HashHistory.push("messages/" + this.props.conversation.id + "/edit");
+    // HashHistory.push("messages/" + this.props.conversation.id + "/edit");
     // HashHistory.push("/");
+    this.props.editConversation(this.props.conversation.id)
   },
 
   unsubscribe: function(event){

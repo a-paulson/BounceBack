@@ -6,8 +6,8 @@ var HashHistory = require("react-router").hashHistory;
 var ConversationForm = React.createClass({
   getInitialState: function() {
     console.log("conversation form gis");
-    if(this.props.params.conversationId){
-      var conversation = ConversationStore.find(this.props.params.conversationId);
+    if(this.props.conversationId){
+      var conversation = ConversationStore.find(this.props.conversationId);
       return({
         title: conversation.title,
         description: conversation.description,
@@ -39,6 +39,8 @@ var ConversationForm = React.createClass({
       this.setState({errors: ConversationStore.getErrors()});
     } else{
       HashHistory.push("messages/" + ConversationStore.all().pop().id);
+      console.log("finsh Form");
+      this.props.onFinish(event);
     }
   },
 
@@ -52,7 +54,7 @@ var ConversationForm = React.createClass({
 
   submitForm: function(event){
     event.preventDefault();
-    if(this.props.params.conversationId){
+    if(this.props.conversationId){
       ConversationClientActions.editConversation({
         title: this.state.title,
         description: this.state.description,
@@ -72,7 +74,7 @@ var ConversationForm = React.createClass({
 
   render: function() {
     console.log("conversation form render");
-    var submitText = this.props.params.conversationId ? "Edit Conversation" : "Create a new Conversation";
+    var submitText = this.props.conversationId ? "Edit Conversation" : "Create a new Conversation";
     return (
       <div>
         <h2>{submitText}</h2>
