@@ -121,6 +121,21 @@
   margin-bottom: 5px;
 }
 
+.left-nav-sub-box{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.left-nav-subtitle{
+  text-align: center;
+ }
+
+
 .conversation-button-box{
   display: flex;
   flex-direction: row;

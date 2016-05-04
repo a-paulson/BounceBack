@@ -2,6 +2,15 @@ var React = require('react');
 var ConversationStore = require('../stores/conversationStore');
 var ConversationClientActions = require('../actions/conversation/conversationClientActions');
 
+var ReactMDL = require('react-mdl');
+var Textfield = ReactMDL.Textfield;
+var List = ReactMDL.List;
+var ListItem = ReactMDL.ListItem;
+var ListItemAction = ReactMDL.ListItemAction;
+var ListItemContent = ReactMDL.ListItemContent;
+var Icon = ReactMDL.Icon;
+var Tooltip = ReactMDL.Tooltip;
+
 var searchConversations = React.createClass({
   getInitialState: function(){
     console.log("SearchConversations gis");
@@ -63,21 +72,41 @@ var searchConversations = React.createClass({
       return conversation.title.toLowerCase().match(searchRegEx) !== null;
     });
 
+    var self = this;
     var conversationArr = matchingTitles.map(function(conversation){
       return(
-        <li onClick={this.lockInput.bind(this, conversation.title)} key={conversation.id}>
-          {conversation.title}
-          <button onClick={this.subscribe.bind(this, conversation.id)} >Subscribe</button>
-        </li>);
-    }.bind(this));
+        <ListItem>
+          <ListItemContent onClick={self.lockInput.bind(self, conversation.title)}>
+            {conversation.title}
+          </ListItemContent>
+          <Tooltip label="Subscribe">
+            <Icon name="done" onClick={self.subscribe.bind(self, conversation.id)}/>
+          </Tooltip>
+        </ListItem>);
+    });
+
 
     return(
       <div>
-        <h2>Search for new Conversations</h2>
-        <input id="conversation-search" type="text" onChange={this.changeQuery} value={this.state.query}/>
-        <ul>
-          {conversationArr}
-        </ul>
+          <div className="left-nav-sub-box">
+            <h4 className="left-nav-subtitle">Search Conversations</h4>
+          </div>
+            <div className="left-nav-sub-box">
+            <Textfield
+              onChange={this.changeQuery}
+              value={this.state.query}
+              label="Search..."
+              style={{width: '200px'}}
+              />
+          </div>
+
+          <div className="left-nav-sub-box">
+            <List style={{width: '300px'}}>
+              {conversationArr}
+            </List>
+          </div>
+
+
       </div>
     );
   }

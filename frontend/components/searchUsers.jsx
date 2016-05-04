@@ -3,6 +3,15 @@ var UserStore = require('../stores/userStore');
 var UserClientActions = require('../actions/user/userClientActions');
 var ConversationClientActions = require('../actions/conversation/conversationClientActions');
 
+var ReactMDL = require('react-mdl');
+var Textfield = ReactMDL.Textfield;
+var List = ReactMDL.List;
+var ListItem = ReactMDL.ListItem;
+var ListItemAction = ReactMDL.ListItemAction;
+var ListItemContent = ReactMDL.ListItemContent;
+var Icon = ReactMDL.Icon;
+var Tooltip = ReactMDL.Tooltip;
+
 var searchUsers = React.createClass({
   getInitialState: function(){
     return {query: "",
@@ -67,21 +76,45 @@ var searchUsers = React.createClass({
       return user.username.toLowerCase().match(searchRegEx) !== null;
     });
 
+    var self = this;
     var userArr = matchingUsers.map(function(user){
       return(
-        <li onClick={this.lockInput.bind(this, user.username)} key={user.id}>
-          {user.username}
-          <button onClick={this.chatWith.bind(this, user.id, user.username)}>Chat with this user.</button>
-        </li>);
-    }.bind(this));
+        <ListItem>
+          <ListItemContent onClick={self.lockInput.bind(self, user.username)}>
+            {user.username}
+          </ListItemContent>
+          <Tooltip label="Message">
+            <Icon name="face" onClick={self.chatWith.bind(self, user.id, user.username)}/>
+          </Tooltip>
+        </ListItem>);
+    });
+
+    // <li onClick={this.lockInput.bind(this, user.username)} key={user.id}>
+    //   {user.username}
+    //   <button onClick={this.chatWith.bind(this, user.id, user.username)}>Chat with this user.</button>
+    // </li>);
 
     return(
       <div>
-        <h2>Search for Users by Username</h2>
-        <input id="user-search" type="text" onChange={this.changeQuery} value={this.state.query}/>
-        <ul>
-          {userArr}
-        </ul>
+          <div className="left-nav-sub-box">
+            <h4 className="left-nav-subtitle">Search Users</h4>
+          </div>
+            <div className="left-nav-sub-box">
+            <Textfield
+              onChange={this.changeQuery}
+              value={this.state.query}
+              label="Search..."
+              style={{width: '200px'}}
+              />
+          </div>
+
+          <div className="left-nav-sub-box">
+            <List style={{width: '300px'}}>
+              {userArr}
+            </List>
+          </div>
+
+
       </div>
     );
   }

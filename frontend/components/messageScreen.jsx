@@ -49,7 +49,7 @@ var MessageScreen = React.createClass({
   newConversation: function(event){
     event.preventDefault();
     // HashHistory.push("new-conversation");
-    this.setState({child: "new-conversation"});
+    this.setState({child: "new-conversation", conversationId: undefined});
   },
 
   editConversation: function(conversationId){
@@ -60,13 +60,13 @@ var MessageScreen = React.createClass({
     console.log("serachConversations clicked");
     event.preventDefault();
     // HashHistory.push("search-conversations");
-    this.setState({child: "search-conversations"});
+    this.setState({child: "search-conversations", conversationId: undefined});
   },
 
   searchUsers: function(event){
     event.preventDefault();
     // HashHistory.push("search-users");
-    this.setState({child: "search-users"});
+    this.setState({child: "search-users", conversationId: undefined});
   },
 
   resetNavBar: function(event){

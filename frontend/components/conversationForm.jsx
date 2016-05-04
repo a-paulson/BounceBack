@@ -3,6 +3,11 @@ var ConversationClientActions = require("../actions/conversation/conversationCli
 var ConversationStore = require("../stores/conversationStore");
 var HashHistory = require("react-router").hashHistory;
 
+var ReactMDL = require('react-mdl');
+var Textfield = ReactMDL.Textfield;
+
+
+
 var ConversationForm = React.createClass({
   getInitialState: function() {
     console.log("conversation form gis");
@@ -30,6 +35,28 @@ var ConversationForm = React.createClass({
 
   componentWillUnmount: function() {
     this.conversationListener.remove();
+  },
+
+  componentWillReceiveProps: function(newProps){
+    console.log("Conversation Form cwrp");
+    console.log(newProps);
+    if(this.props.conversationId !== newProps.conversationId){
+      if(newProps.conversationId){
+        var conversation = ConversationStore.find(newProps.conversationId);
+        this.setState({
+          title: conversation.title,
+          description: conversation.description,
+          id: conversation.id,
+          errors: ""
+        });
+      }else {
+        this.setState({
+          title: "",
+          description: "",
+          errors: ""
+        });
+      }
+    }
   },
 
   onChange: function(){
@@ -74,19 +101,40 @@ var ConversationForm = React.createClass({
 
   render: function() {
     console.log("conversation form render");
-    var submitText = this.props.conversationId ? "Edit Conversation" : "Create a new Conversation";
+    var submitText = this.props.conversationId ? "Update" : "Create";
+    var submitTitle = this.props.conversationId ? "Edit Conversation" : "New Conversation";
     return (
       <div>
-        <h2>{submitText}</h2>
+        <div className="left-nav-sub-box">
+          <h4 className="left-nav-subtitle">{submitTitle}</h4>
+        </div>
+
         <form onSubmit={this.submitForm}>
-          <label>Title
-          <input type="text" onChange={this.changeTitle} value={this.state.title} />
-          </label>
-          <br />
-          <label>Description
-          <input type="text" onChange={this.changeDescription} value={this.state.description} />
-          </label>
-          <input type="submit" value={submitText} />
+          <div className="left-nav-sub-box">
+          <Textfield
+            onChange={this.changeTitle}
+            value={this.state.title}
+            label="Title"
+            floatingLabel
+            style={{width: '200px'}}
+            />
+        </div>
+
+        <div className="left-nav-sub-box">
+        <Textfield
+            onChange={this.changeDescription}
+            value={this.state.description}
+            label="Description"
+            floatingLabel
+            maxRows={3}
+            style={{width: '200px'}}
+            />
+          </div>
+          <div className="left-nav-sub-box">
+          <input type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored form-submit-button"
+            onClick={this.resetNavBar} value={submitText} />
+          </div>
+
         </form>
       </div>
     );
