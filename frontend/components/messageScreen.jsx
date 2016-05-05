@@ -10,6 +10,9 @@ var SearchConversations = require("./searchConversations");
 var SearchUsers = require("./searchUsers");
 
 
+var Icon = require('react-mdl').Icon;
+
+
 var MessageScreen = React.createClass({
   getInitialState: function(){
     console.log("initial state");
@@ -129,7 +132,9 @@ var MessageScreen = React.createClass({
       <div>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div className="mdl-layout__drawer">
-                  <h3><i className="material-icons md-36">&#xE853;</i>{username}</h3>
+              <div className="username-div">
+              <h3 className="username">{username}</h3> <Icon name="account_circle" className="user-icon"/>
+              </div>
               <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
                 onClick={this.logout}>Logout</button>
               <nav className="mdl-navigation left-nav-navigation">
@@ -151,7 +156,7 @@ var MessageScreen = React.createClass({
           </div>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div className="mdl-layout__drawer" id="left-side-nav-bar">
-              <nav className="mdl-navigation">
+              <nav className="mdl-navigation" id="no-padding-top">
                 <ConversationIndex editConversation={this.editConversation}/>
               </nav>
             </div>

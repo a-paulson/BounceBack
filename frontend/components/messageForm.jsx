@@ -21,6 +21,7 @@ var MessageForm = React.createClass({
   },
 
   render: function() {
+    console.log("MessageForm render");
     return (
       <div>
         <form onSubmit={this.submitMessage}>

@@ -79,12 +79,15 @@ var searchUsers = React.createClass({
     var self = this;
     var userArr = matchingUsers.map(function(user){
       return(
-        <ListItem>
+        <ListItem key={user.id}>
           <ListItemContent onClick={self.lockInput.bind(self, user.username)}>
             {user.username}
           </ListItemContent>
           <Tooltip label="Message">
-            <Icon name="face" onClick={self.chatWith.bind(self, user.id, user.username)}/>
+            <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored subscription-button"
+              onClick={self.chatWith.bind(self, user.id, user.username)}>
+              <Icon name="question_answer" />
+            </button>
           </Tooltip>
         </ListItem>);
     });

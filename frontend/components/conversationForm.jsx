@@ -126,7 +126,7 @@ var ConversationForm = React.createClass({
             value={this.state.description}
             label="Description"
             floatingLabel
-            maxRows={3}
+            rows={2}
             style={{width: '200px'}}
             />
           </div>

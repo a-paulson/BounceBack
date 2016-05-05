@@ -65,6 +65,7 @@ var ConversationIndex = React.createClass({
     console.log("render ConversationIndex");
     return (
       <div>
+        <h4 className="conversation-header">Conversations</h4>
         {this.generateConversationItems()}
       </div>
     );

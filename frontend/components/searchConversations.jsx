@@ -75,12 +75,14 @@ var searchConversations = React.createClass({
     var self = this;
     var conversationArr = matchingTitles.map(function(conversation){
       return(
-        <ListItem>
+        <ListItem key={conversation.id}>
           <ListItemContent onClick={self.lockInput.bind(self, conversation.title)}>
             {conversation.title}
           </ListItemContent>
           <Tooltip label="Subscribe">
-            <Icon name="done" onClick={self.subscribe.bind(self, conversation.id)}/>
+            <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored subscription-button" onClick={self.subscribe.bind(self, conversation.id)}>
+              <Icon name="add" />
+            </button>
           </Tooltip>
         </ListItem>);
     });

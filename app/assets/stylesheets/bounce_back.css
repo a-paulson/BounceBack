@@ -1,14 +1,3 @@
-.NavBar{
-  float: left;
-  margin: 50px;
-}
-
-.MessagePane{
-  float: left;
-  margin: 50px;
-}
-
-
 .signin-card.mdl-card {
   width: 340px;
   height: 220px;
@@ -101,8 +90,13 @@
 /* Rules for sizing the icon. */
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
+.material-icons.md-34 {
+  font-size: 34px;
+   }
 .material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-48 {
+  font-size: 48px;
+}
 
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
@@ -133,17 +127,25 @@
 
 .left-nav-subtitle{
   text-align: center;
+  color: #878787;
  }
 
+.mdl-list__item-primary-content{
+  color: #878787;
+}
+
+#textfield-Search{
+  color: #878787;
+}
 
 .conversation-button-box{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
 .conversation-button{
-  width: 40%;
+  width: 42.5%;
+  margin-left: 5%;
 }
 .unsubscribe-button{
   width: 80%;
@@ -174,6 +176,94 @@
   -webkit-transform: translateX(-240px);
    transform: translateX(-240px);
 }
+
+.subscription-button{
+  background: rgb(96, 125, 139);
+  -ms-transform: scale(.75,.75); /* IE 9 */
+  -webkit-transform: scale(.75,.75); /* Safari */
+  transform: scale(.75,.75);
+}
+.mdl-button--fab.mdl-button--colored{
+  background: rgb(96, 125, 139);
+}
+.mdl-button--fab.mdl-button--colored:hover{
+  background: rgb(96, 125, 139);
+}
+
+.mdl-list__item{
+  padding: 4px;
+}
+
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+  margin-left: 240px;
+}
+
+.mdl-layout--fixed-drawer>.mdl-layout__drawer {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.conversation-index-item-div:hover{
+  background-color: #e0e0e0;
+}
+.conversation-index-item-div{
+padding-top: 10px;
+padding-bottom: 10px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#no-padding-top{
+  padding-top: 0px;
+}
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+p {
+  line-height: 16px;
+}
+
+.conversation-title{
+  margin: 5px 0 10px;
+}
+
+.conversation-header{
+  margin-top: 16px;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #878787;
+}
+
+.username-div{
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-icon{
+  font-size: 48px;
+  margin: 12px 0 12px 0;
+}
+
+.username{
+  line-height: 48px;
+  margin: 12px 0 12px 0;
+}
+
+.page-content{
+  /* Firefox */
+width: -moz-calc(100% - 260px);
+/* WebKit */
+width: -webkit-calc(100% - 260px);
+/* Opera */
+width: -o-calc(100% - 260px);
+/* Standard */
+width: calc(100% - 260px);
+}
+
+
 
 /*.mdl-layout__drawer{
   width: 20%;

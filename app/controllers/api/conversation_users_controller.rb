@@ -1,4 +1,5 @@
 class Api::ConversationUsersController < ApplicationController
+  before_action :ensure_current_user!
 
   def create
     @cu = ConversationUser.new(cu_params)

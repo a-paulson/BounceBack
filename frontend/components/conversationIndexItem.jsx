@@ -25,7 +25,7 @@ var ConversationIndexItem = React.createClass({
     } else{
       return(
         <div className="conversation-button-box">
-          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored unsubscribe-button"
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
           onClick={this.unsubscribe}>unsubscribe</button>
         </div>
       );
@@ -43,7 +43,7 @@ var ConversationIndexItem = React.createClass({
     console.log("messages/" + this.props.conversation.id + "/edit");
     // HashHistory.push("messages/" + this.props.conversation.id + "/edit");
     // HashHistory.push("/");
-    this.props.editConversation(this.props.conversation.id)
+    this.props.editConversation(this.props.conversation.id);
   },
 
   unsubscribe: function(event){
@@ -55,9 +55,9 @@ var ConversationIndexItem = React.createClass({
   render: function() {
     var conversation = this.props.conversation;
       return (
-        <div>
+        <div className="conversation-index-item-div">
           <a className="mdl-navigation__link" onClick={this.handleClick} href="">
-            <h5>{conversation.title}</h5>
+            <h5 className="conversation-title">{conversation.title}</h5>
             <p>{conversation.description}</p>
           </a>
           {this.manipulateConversation()}

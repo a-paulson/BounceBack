@@ -68,7 +68,6 @@ var MessagePane = React.createClass({
     // console.log("running rensder: " + messages);
     return (
       <div className="MessagePane">
-        <p>MessagePane</p>
         <MessageIndex messages={messages}/>
         <MessageForm conversationId={this.props.params.conversationId}/>
       </div>

@@ -1,4 +1,5 @@
 class Api::DirectMessagesController < ApplicationController
+  before_action :ensure_current_user!
 
   def create
     @conversation = Conversation.new(dm_params)
