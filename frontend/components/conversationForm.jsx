@@ -115,7 +115,6 @@ var ConversationForm = React.createClass({
             onChange={this.changeTitle}
             value={this.state.title}
             label="Title"
-            floatingLabel
             style={{width: '200px'}}
             />
         </div>
@@ -125,8 +124,6 @@ var ConversationForm = React.createClass({
             onChange={this.changeDescription}
             value={this.state.description}
             label="Description"
-            floatingLabel
-            rows={2}
             style={{width: '200px'}}
             />
           </div>

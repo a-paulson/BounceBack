@@ -32,6 +32,7 @@ class Api::ConversationsController < ApplicationController
         ON CU."conversation_id" = "conversations"."id"
         WHERE "conversations"."private" = false
         AND CU."id" IS NULL
+        ORDER BY LOWER("conversations".title), "conversations".title
       SQL
       render :search_index
     end

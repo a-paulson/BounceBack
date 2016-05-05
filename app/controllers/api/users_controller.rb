@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
   end
 
   def search_index
-    @users = User.where("id != ? AND user_type != ?", current_user.id, 'guest')
+    @users = User.where("id != ? AND user_type != ?", current_user.id, 'guest').order(:username)
     render :search_index
   end
 end

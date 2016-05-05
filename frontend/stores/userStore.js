@@ -4,7 +4,7 @@ var UserConstants = require("../constants/userConstants");
 
 var _currentUser = undefined;
 var _authErrors = [];
-var _searchUsers = {};
+var _searchUsers = [];
 
 var UserStore = new Store(AppDispatcher);
 
@@ -23,10 +23,10 @@ UserStore.getErrors = function(){
 };
 
 UserStore.getSearchUsers = function(){
-  var users = [];
-  Object.keys(_searchUsers).forEach(function(key){
-    users.push(_searchUsers[key]);
-  });
+  var users = _searchUsers.slice();
+  // Object.keys(_searchUsers).forEach(function(key){
+  //   users.push(_searchUsers[key]);
+  // });
   return users;
 };
 

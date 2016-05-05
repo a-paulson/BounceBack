@@ -89,7 +89,7 @@ var MessageScreen = React.createClass({
       case "new-conversation":
         child = (
           <div className="left-nav-subsection">
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+            <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
               onClick={this.resetNavBar}>
               Close
             </button>
@@ -101,7 +101,7 @@ var MessageScreen = React.createClass({
       case "search-conversations":
         child = (
           <div className="left-nav-subsection">
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+            <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
               onClick={this.resetNavBar}>
               Close
             </button>
@@ -113,7 +113,7 @@ var MessageScreen = React.createClass({
       case "search-users":
         child = (
           <div className="left-nav-subsection">
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+            <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
               onClick={this.resetNavBar}>
               Close
             </button>
@@ -131,18 +131,18 @@ var MessageScreen = React.createClass({
     return (
       <div>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-            <div className="mdl-layout__drawer">
+            <div className="mdl-layout__drawer sidebar-recolor">
               <div className="username-div">
               <h3 className="username">{username}</h3> <Icon name="account_circle" className="user-icon"/>
               </div>
-              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+              <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
                 onClick={this.logout}>Logout</button>
               <nav className="mdl-navigation left-nav-navigation">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
                   onClick={this.newConversation}>New Conversation</button>
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
                   onClick={this.searchConversations}>Search Conversations</button>
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored side-nav-button"
+                <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
                   onClick={this.searchUsers}>Search Users</button>
 
                 {child}
@@ -155,7 +155,7 @@ var MessageScreen = React.createClass({
             </main>
           </div>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-            <div className="mdl-layout__drawer" id="left-side-nav-bar">
+            <div className="mdl-layout__drawer sidebar-recolor" id="left-side-nav-bar">
               <nav className="mdl-navigation" id="no-padding-top">
                 <ConversationIndex editConversation={this.editConversation}/>
               </nav>

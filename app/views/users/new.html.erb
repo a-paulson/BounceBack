@@ -28,29 +28,29 @@
               <div class="mdl-card__supporting-text">
               <div class="signin-signup-box">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" name="user[username]" pattern="^[a-zA-Z0-9]{1,15}$" id="login-username"/>
-             <label class="mdl-textfield__label" for="login-username">Username</label>
-               <span class="mdl-textfield__error">Letters and numbers only.</span>
+              <input class="mdl-textfield__input" type="text" name="user[username]" pattern="^[a-zA-Z0-9]{1,10}$" id="login-username"/>
+             <label class="mdl-textfield__label sign-in" for="login-username">Username</label>
+               <span class="mdl-textfield__error">Letters and numbers only. 10 characters max.</span>
 
            </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" name="user[fname]" pattern="^[A-Za-z ,.'-]+$" id="login-fname"/>
-               <label class="mdl-textfield__label" for="login-fname">First Name</label>
+               <label class="mdl-textfield__label sign-in" for="login-fname">First Name</label>
                  <span class="mdl-textfield__error">Invalid Character</span>
            </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" name="user[lname]" pattern="^[A-Za-z ,.'-]+$" id="login-lname"/>
-               <label class="mdl-textfield__label" for="login-lname">Last Name</label>
+               <label class="mdl-textfield__label sign-in" for="login-lname">Last Name</label>
                  <span class="mdl-textfield__error">Invalid Character</span>
            </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" name="user[email]" pattern="^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$" id="login-email"/>
-               <label class="mdl-textfield__label" for="login-email">Email</label>
+               <label class="mdl-textfield__label sign-in" for="login-email">Email</label>
                <span class="mdl-textfield__error">Invalid Email</span>
            </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" pattern="^[\S]{8,}$" type="password" name="user[password]" id="login-password"/>
-               <label class="mdl-textfield__label" for="login-password">Password</label>
+               <label class="mdl-textfield__label sign-in" for="login-password">Password</label>
                  <span class="mdl-textfield__error">Your password must be at least 8 characters.</span>
               </div>
             </div>

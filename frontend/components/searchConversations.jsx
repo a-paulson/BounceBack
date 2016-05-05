@@ -80,7 +80,7 @@ var searchConversations = React.createClass({
             {conversation.title}
           </ListItemContent>
           <Tooltip label="Subscribe">
-            <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored subscription-button" onClick={self.subscribe.bind(self, conversation.id)}>
+            <button className="mdl-button mdl-js-button mdl-button--fab subscription-button" onClick={self.subscribe.bind(self, conversation.id)}>
               <Icon name="add" />
             </button>
           </Tooltip>

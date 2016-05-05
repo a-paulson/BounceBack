@@ -20,13 +20,47 @@
   justify-content: flex-start;
 }
 
-.message-card.mdl-card {
+.mdl-card.message-card {
   width: 100%;
   /*height: 100%;*/
-  background: rgba(0, 0, 0, 0.30);
+  min-height: 0;
+  height: 100%;
+  word-wrap: break-word;
+
+  /*background: rgba(0, 0, 0, 0.30);*/
+  background-color: #DEEFFA;
   /*padding: 10px;*/
   margin: 10px;
 }
+
+
+.mdl-card__supporting-text{
+  padding: 0;
+  margin: 0;
+  margin: 2%;
+  margin-right: 0;
+  padding-right: 2%;
+  width: 96%
+  color: #757575;
+  font-size: 16px;
+}
+
+@media screen and ( max-width: 1000px ){
+    .mdl-card__supporting-text{
+        margin: 10px;
+        padding-right: 10px;
+    }
+}
+
+.message-author{
+  margin-top: 0;
+}
+
+.message-body{
+  font-size: 20px;
+  line-height: 1.2;
+}
+
 
 .signup-card.mdl-card {
   width: 340px;
@@ -113,6 +147,14 @@
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #E9EFF2;
+  color: #344954;
+}
+
+.side-nav-button:hover{
+  /*background-color: rgb(123, 160, 179);*/
+  background-color: #F59898;
+  /*background-color: rosybrown;*/
 }
 
 .left-nav-sub-box{
@@ -127,15 +169,26 @@
 
 .left-nav-subtitle{
   text-align: center;
-  color: #878787;
+  color: #D5DBDE;
  }
 
 .mdl-list__item-primary-content{
-  color: #878787;
+  color: #D5DBDE;
 }
 
 #textfield-Search{
-  color: #878787;
+  color: #D5DBDE;
+  border-color: #D5DBDE;
+}
+
+#textfield-Title{
+  color: #D5DBDE;
+  border-color: #D5DBDE;
+}
+
+#textfield-Description{
+  color: #D5DBDE;
+  border-color: #D5DBDE;
 }
 
 .conversation-button-box{
@@ -146,13 +199,24 @@
 .conversation-button{
   width: 42.5%;
   margin-left: 5%;
+  background-color: #E9EFF2;
+  color: #344954;
 }
 .unsubscribe-button{
   width: 80%;
+  background-color: #E9EFF2;
+  color: #344954;
+}
+
+.conversation-button:hover{
+  background-color: #F59898;
+}
+.unsubscribe-button:hover{
+  background-color: #F59898;
 }
 
 .left-nav-subsection{
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, .1);
   margin-top: 16px;
   padding-top: 16px;
   display: flex;
@@ -160,7 +224,7 @@
 }
 
 .left-nav-navigation{
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, .1);
   margin-top: 16px;
 }
 
@@ -169,6 +233,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  background-color: mintcream;
 }
 
 #left-side-nav-bar{
@@ -178,16 +243,15 @@
 }
 
 .subscription-button{
-  background: rgb(96, 125, 139);
+  background-color: #E9EFF2;
+  color: #344954;
   -ms-transform: scale(.75,.75); /* IE 9 */
   -webkit-transform: scale(.75,.75); /* Safari */
   transform: scale(.75,.75);
 }
-.mdl-button--fab.mdl-button--colored{
-  background: rgb(96, 125, 139);
-}
-.mdl-button--fab.mdl-button--colored:hover{
-  background: rgb(96, 125, 139);
+
+.subscription-button:hover{
+  background-color: #F59898;
 }
 
 .mdl-list__item{
@@ -204,12 +268,17 @@
 }
 
 .conversation-index-item-div:hover{
-  background-color: #e0e0e0;
+  /*background-color: #e0e0e0;*/
+  background-color: #F59898;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover{
+  background-color: #F59898;
 }
 .conversation-index-item-div{
 padding-top: 10px;
 padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 #no-padding-top{
@@ -218,6 +287,8 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
   padding-top: 4px;
   padding-bottom: 4px;
+  /*color: #C4C9CC;*/
+  color: #D5DBDE;
 }
 
 p {
@@ -232,25 +303,34 @@ p {
   margin-top: 16px;
   margin-bottom: 0;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);;
   text-align: center;
-  color: #878787;
+  color: #D5DBDE;
 }
 
 .username-div{
   display: flex;
   justify-content: space-around;
+  color: #D5DBDE;
 }
 
 .user-icon{
   font-size: 48px;
   margin: 12px 0 12px 0;
+  color: #D5DBDE;
 }
 
 .username{
   line-height: 48px;
+  font-size: 28px;
   margin: 12px 0 12px 0;
+  color: #D5DBDE;
 }
+
+.sidebar-recolor{
+  background-color: #607d8b;
+}
+
 
 .page-content{
   /* Firefox */
@@ -264,6 +344,21 @@ width: calc(100% - 260px);
 }
 
 
+.mdl-textfield__label:after{
+  background-color: #F59898;
+}
+
+.mdl-textfield__label{
+  color: #D5DBDE;
+}
+
+.mdl-textfield__label.sign-in:after {
+  background-color: rgb(96, 125, 139);
+}
+
+.mdl-textfield__label.sign-in{
+  color: rgb(96, 125, 139);
+}
 
 /*.mdl-layout__drawer{
   width: 20%;

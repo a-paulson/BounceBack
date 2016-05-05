@@ -84,7 +84,7 @@ var searchUsers = React.createClass({
             {user.username}
           </ListItemContent>
           <Tooltip label="Message">
-            <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored subscription-button"
+            <button className="mdl-button mdl-js-button mdl-button--fab subscription-button"
               onClick={self.chatWith.bind(self, user.id, user.username)}>
               <Icon name="question_answer" />
             </button>
