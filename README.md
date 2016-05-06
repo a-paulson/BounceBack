@@ -1,292 +1,74 @@
-# Bounce Back
-
-[BounceBack.work][heroku] You can access the current test conversation by logging in with the username: user2 and password: password. Do not try to access the test conversation with the guest account. It is not connected to conversations yet.
-
-[heroku]: http://bounceback.work/
-
-## Minimum Viable Product
-
-BounceBack is webchat application for job seeker. It offers a chance for users to hone their interview skills, interact with recruiters and discuss job hunting. Inspiration came from Slack and Glassdoor. BounceBack will be built using Ruby on Rails and React with Flux architecture. The minimum viable product will contain the following features:
-
-- [x] Account creation and user authentication
-- [x] Realtime chat organized into conversations
-- [ ] High quality seed data for conversations and rudimentary chatbots for direct messaging
-- [x] Hosting on Heroku with a custom domain name
-- [ ] A smooth bug free user experience
-- [ ] Appealing CSS styling
-- [ ] A production README with images and code snippets
-
-## Product Goals and Priorities
-
-BounceBack will allow users to do the following:
-
-<!-- This is a Markdown checklist. Use it to keep track of your
-progress. Put an x between the brackets for a checkmark: [x] -->
+<!-- # FresherNote
 
-###Minimum Viable Product (MVP) Features
+[FresherNote live][heroku] **NB:** This should be a link to your production site
 
-Users Can:
+[heroku]: http://www.herokuapp.com
 
-- [x] Create a new account
-- [x] Sign in and out using their account, or a guest account
-- [x] Post and read messages
-- [ ] Create and join conversations with other users
-- [ ] Interact with chatbots
-- [ ] Engage with a well styled and bug free app
+FresherNote is a full-stack web application inspired by Evernote.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
 
-###Bonus Features
+## Features & Implementation
 
-Users Can:
+ **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
 
-- [ ] Search for posts
-- [ ] Search for other users
-- [ ] Have visual feedback while their chat partner is typing, similar to Facebook chat or iMessage
-- [ ] Like or star posts
-- [ ] Post well formatted links
-- [ ] Post mentions, linking to other users by name
-- [ ] Post files and have those files to be maintained across sessions
-- [ ] Post with different formatting using a markup language
-- [ ] Create links to specific chat items
-- [ ] View other users by clicking on their username
-- [ ] Opt to post anonymously in public channels
-- [ ] Create and administer private channels
-- [ ] Display timestamps in a timezone of their choosing
-- [ ] Setup notifications
-- [ ] Chat with high quality bots
-- [ ] Chat with me, a real human being
-- [ ] Chat on a mobile platform via a mobile app or mobile web site
+### Single-Page App
 
-<!-- ## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+FresherNote is truly a single-page; all content is delivered on one static page.  The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app by making an API call to `SessionsController#get_user`.
 
-[views]: ./docs/views.md
-[components]: ./docs/components.md
-[flux-cycles]: ./docs/flux-cycles.md
-[api-endpoints]: ./docs/api-endpoints.md
-[schema]: ./docs/schema.md -->
+```ruby
+class Api::SessionsController < ApplicationController
+    def get_user
+      if current_user
+        render :current_user
+      else
+        render json: errors.full_messages
+      end
+    end
+ end
+  ```
 
-## Implementation Timeline
+### Note Rendering and Editing
 
-### Phase 1: Auth Setup and Landing Page (1 days)
+  On the database side, the notes are stored in one table in the database, which contains columns for `id`, `user_id`, `content`, and `updated_at`.  Upon login, an API call is made to the database which joins the user table and the note table on `user_id` and filters by the current user's `id`.  These notes are held in the `NoteStore` until the user's session is destroyed.  
 
-**Objective:** the user should be able to: View the splash page, create a new user and login, then view an initial landing screen
+  Notes are rendered in two different components: the `CondensedNote` components, which show the title and first few words of the note content, and the `ExpandedNote` components, which are editable and show all note text.  The `NoteIndex` renders all of the `CondensedNote`s as subcomponents, as well as one `ExpandedNote` component, which renders based on `NoteStore.selectedNote()`. The UI of the `NoteIndex` is taken directly from Evernote for a professional, clean look:  
 
-- [x] create new project
-- [x] create `User` model
-- [x] create auth controllers model
-- [x] setup Webpack & Flux scaffold
-- [x] setup React Router
-- [x] Front end authentication
-- [x] sign in page
-- [x] sign up page
-- [x] Guest Login
-- [x] initial landing page after sign in
-- [x] Push to Heroku
+![image of notebook index](https://github.com/appacademy/sample-project-proposal/blob/master/docs/noteIndex.png)
 
-### Phase 2: Basic Chat Implementation (2 days)
+Note editing is implemented using the Quill.js library, allowing for a Word-processor-like user experience.
 
-**Objective:** Messages can be created, and viewed on the main screen. These messages persist between users and sessions and are displayed the same way to all users. Messages are updated dynamically for all users. Also create channels to have a conversation to hold these messages.
+### Notebooks
 
-- [x] create `Message` model
-- [x] create `Conversation` and `ConversationUser` model
-- [x] CRUD API for conversations
-- [x] jBuilder views for messages
-- [x] jBuilder views for conversations
-- [x] Implement Flux loop for messages and conversations
-- [x] Create a React messageIndex with messageIndexItems to display messages
-- [x] Create a React messageForm to create new messages
-- [x] setup websockets for real time updates
-- [x] Test these in browser
-- [x] Test these across multiple users
+Implementing Notebooks started with a notebook table in the database.  The `Notebook` table contains two columns: `title` and `id`.  Additionally, a `notebook_id` column was added to the `Note` table.  
 
-### Phase 3: Initial Styling (1 days)
+The React component structure for notebooks mirrored that of notes: the `NotebookIndex` component renders a list of `CondensedNotebook`s as subcomponents, along with one `ExpandedNotebook`, kept track of by `NotebookStore.selectedNotebook()`.  
 
-**Objective:** Complete initial styling, bringing unified look and color to all pages. I plan to use bootstrap to style the app.
+`NotebookIndex` render method:
 
-- [ ] create a basic style guide
-- [ ] Style and flesh out splash page
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+```javascript
+render: function () {
+  return ({this.state.notebooks.map(function (notebook) {
+    return <CondensedNotebook notebook={notebook} />
+  }
+  <ExpandedNotebook notebook={this.state.selectedNotebook} />)
+}
+```
 
-### Phase 4: Finish converstion CRUD actions (1 days)
+### Tags
 
-**Objective:** Allow conversations to be viewed, selected and manipulated by the user. Finish fleshing out react components on message screen.
+As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
 
-- [ ] Finish react components for conversation CRUD actions
-- [ ] Debug conversation CRUD actions
-- [ ] Allow for conversation search and subscription
+Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
 
-### Phase 5: Chatbots (.5 day)
+![tag screenshot](https://github.com/appacademy/sample-project-proposal/blob/master/docs/tagScreenshot.png)
 
-**Objective:** Implement a chatbot for user interaction.
+## Future Directions for the Project
 
-- Create very simple chatbot that will ask practice interview questions.
-  - [ ] First version will use an array of data with random selection.
+In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
 
-### Phase 6: Guest Accounts (.5 days)
+### Search
 
-**Objective:** Fully flesh out the guest account. Make sure initial user experience is smooth and bug free.
+Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
 
-- [ ] Decide on and implement UX for guest accounts
-- [ ] Provide appropriate default settings for guest account
-- [ ] Do polishing of user experience so MVP experience is bug free and smooth.
+### Direct Messaging
 
-
-### Phase 7: Seed Data (0.5 days)
-
-**objective:** Provide seed data for both bots and conversations.
-
-- [ ] Add seed data to conversations to flesh out their contents
-- [ ] Implement multiple bots with different behavior to simulate various interactions.
-
-<!-- ### Phase 8: User Search (.5 day)
-
-**objective:** Implement user search for direct messaging
-
-- [ ] Add Flux loop for user search by username
-- [ ] Add search bar React component
-- [ ] Allow users to create new direct messages using user search. -->
-### Phase 8: Final Styling and Refactoring (1 day)
-
-**objective:** Make site beautiful, remove all bugs.
-
-- [ ] Get feedback on styling, UX and bugs from classmates
-- [ ] Make styling as professional as possible
-- [ ] Remove any remaining bugs
-
-##### Other bonus features will be added to this schedule as it is updated.
-
-- Advanced Chatbot
-  - [ ] Try and develop a more intelligent bot using [Microsoft Bot Framework](https://dev.botframework.com/).
-
-<!-- User Accounts
-MVP
-  Anonymous Accounts
-    Anonynimity only in channels and with bots, not in direct messaging
-  Different Classes of accounts,
-    job seeker,
-    recruiter,
-    anon,
-    career coach
-    Admins
-    Demo
-  Persistent login
-
-Chat
-  Text Messages can be posted
-  They appear in order
-  The history is maintained
-  This Happens in real time
-
-Channels - multiperson chats
-  behave more like 1/2 chat, 1/2 message board
-  All of the behavior above but multiperson
-  Public v. Private
-  Admins can admit and remove members
-  Users can join and leave
-
-Direct Message - 2 person chats
-  peristent conversations,
-  can be reordering and controled with gui (persistent even if removed)
-  User search to set up chats with indviduals
-  link from user's post to direct chat with them
-  General search looks pretty cool
-  Visually edit Channels
-  Users can block other users they don't like
-
-Account customization
-  Profile Pic
-  Username
-  Real Name
-  Email
-  local time???
-
-[ ] User account page
-[ ] View and customize their account settings
-
-  Chat Bots
-    interview questions
-    Technical and Behavioral
-      Old school RPG interactions
-    See: http://practiceyourvcpitch.com/
-
-    Walkthrough for showing off
-
-Splash Page
-
-Bonus
-
-
-Archive Search
-User Searching
-
-File upload
-Liking/ Starring posts
-Posting links
-User Mentions
-Markup/code????
-
-Linking to chat items
-Click on user name to get link to profile and direct message and files
-
-Anon mode option for posting in public
-
-Time zone support????
-Notifications????
-
-Hook up to my phone
-iPhone app
-
-Make sure to reset seed Data!!!
--->
-
-<!-- [phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md -->
-
-
-<!-- Notes:
-          Enforcing one account per email,
-          Add account recovery if time.
-
-          Library auth?
-          Allow to login with username or email
-
-          Inclusion constraint on user_type
-
-          use browser history?
-          double confirm password
-          add multiple admins for a conversation
-
-          Make sure to show a user that they are logged in and their credentials in upper left corner of the screen.
-
-          Persistent Login
-
-          multi-tab conversations, make delete tabs
-
-
-          Style Everything
-          Favicon
-          Go back and fully read and embrace google material design
-
-          This weekend pay Technical debt on front end auth
-            local storage
-            better mixin
-            fix the errors loggin in and out from child components
-            Figure out the default conversation UX
-
-          Also pay technical debt on Conversation creation and editing
-            Create conversations
-            Edit conversations
-            Delete conversations
-            Add users
-            Subscribe and unsubscribe
-            Search for users and conversations
-              Fuzzy search?
-          -->
+Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.   -->

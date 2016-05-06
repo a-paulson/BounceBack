@@ -130,13 +130,15 @@ var MessageScreen = React.createClass({
 
     var directions = (
       <div className="instructions-holder">
-      <div className="instructions mdl-card message-card">
-        <h1>Welcome to BounceBack</h1>
-        <h4>Jump start your job search today by chatting with recruiters, career coaches and other applicants.
-           Get started by choosing a conversation on the right. If you want something new,
-           use the options on the left to message a user, find a new conversation or create your own.
-           Congratulations on taking the first step towards a new career. </h4>
-      </div>
+        <div className="instructions mdl-card message-card">
+            <h1>Welcome to BounceBack</h1>
+            <h4>
+               Jump start your job search today by chatting with recruiters, career coaches and other applicants.
+               Get started by choosing a conversation on the right. Don't see anything you like?
+               Use the options on the left to message a user, find a new conversation or create your own.
+               Congratulations on taking the first step towards a new career.
+             </h4>
+        </div>
       </div>
 
 

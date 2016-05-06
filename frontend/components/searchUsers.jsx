@@ -47,8 +47,8 @@ var searchUsers = React.createClass({
     event.preventDefault();
     var currentUser = UserStore.currentUser().user;
     ConversationClientActions.createDirectMessage({
-      title: "Direct Message between " + currentUser + " and " + username,
-      description: "Direct Message between " + currentUser + " and " + username,
+      title: "Message: " + currentUser + ", " + username,
+      description: "Direct message between " + currentUser + " and " + username,
       private: true,
       user_id: id
     });

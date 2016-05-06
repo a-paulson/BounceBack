@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.user_type = "user"
     if @user.save
+      subscribe(@user)
       login!(@user)
       redirect_to app_url
     else
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 
   def guest
     @user = User.guest_user
+    subscribe(@user)
     login!(@user)
     redirect_to app_url
   end
@@ -39,5 +41,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :fname, :lname, :email, :user_type, :password)
+  end
+
+  def subscribe(user)
+    ConversationUser.create(conversation_id: 1, user_id: user.id)
+    ConversationUser.create(conversation_id: 2, user_id: user.id)
+    ConversationUser.create(conversation_id: 3, user_id: user.id)
+    ConversationUser.create(conversation_id: 4, user_id: user.id)
   end
 end

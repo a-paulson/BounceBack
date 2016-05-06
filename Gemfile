@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pusher'
 gem 'figaro'
 
+gem 'faker'
+
 # gem "font-awesome-rails"
 
 # gem 'material_design_lite-rails'
