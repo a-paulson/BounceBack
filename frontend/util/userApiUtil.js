@@ -6,7 +6,7 @@ var UserApiUtil = {
       type:"GET",
       url:"api/user",
       success: function(user){
-        console.log("userApiUtil success on fetchCurrentUser");
+        // console.log("userApiUtil success on fetchCurrentUser");
         UserServerActions.receiveCurrentUser(user);
       },
       error: function(errors){

@@ -38,7 +38,7 @@ var ConversationApiUtil = {
         ConversationServerActions.receiveConversation(conversation);
       },
       error: function(errors){
-        console.log(errors);
+        // console.log(errors);
         ConversationServerActions.receiveErrors(errors);
       }
     });
@@ -60,16 +60,16 @@ var ConversationApiUtil = {
   },
 
   deleteConversation: function(id){
-    console.log("AHHHHHH " + id);
+    // console.log("AHHHHHH " + id);
     $.ajax({
       type:"DELETE",
       url:"api/conversations/" + id,
       success: function(conversation){
-        console.log(conversation);
+        // console.log(conversation);
         ConversationServerActions.removeConversation(conversation.id);
       },
       error: function(errors){
-        console.log(errors);
+        // console.log(errors);
         ConversationServerActions.receiveErrors(errors);
       }
     });

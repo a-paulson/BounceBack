@@ -6,7 +6,7 @@ var ConversationClientActions = {
   },
 
   fetchAllConversations: function(){
-    console.log("fetchAllConversations");
+    // console.log("fetchAllConversations");
     ConversationApiUtil.fetchAllConversations();
   },
 

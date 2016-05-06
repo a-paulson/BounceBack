@@ -72,9 +72,9 @@ var SignUpForm = React.createClass({
   },
 
   changeUserType: function(val, option){
-    console.log(val);
+    // console.log(val);
     this.setState({user_type: val.value, displayedOption: val.value});
-    console.log(this.state);
+    // console.log(this.state);
   },
 
   selectOptions: [{value: "user", label: "Jobseeker"},

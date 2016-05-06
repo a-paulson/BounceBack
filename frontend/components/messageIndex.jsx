@@ -15,7 +15,7 @@ var MessageIndex = React.createClass({
   },
 
   render: function() {
-    console.log("render messageIndex");
+    // console.log("render messageIndex");
     return (
       <div className="message-index">
           {this.getMessageItems()}

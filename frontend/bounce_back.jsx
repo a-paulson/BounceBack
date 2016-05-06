@@ -29,17 +29,17 @@ var routes =(
 // var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
 // if ((is_chrome)&&(is_safari)) { is_safari = false; }
 // if ((is_chrome)&&(is_opera)) { is_chrome = false; }
-// console.log("this browser is safari?" + is_safari);
+// // console.log("this browser is safari?" + is_safari);
 // window.safari_count = 0;
 
 
 document.addEventListener("DOMContentLoaded", function(){
   if(document.getElementById('content')){
-    console.log(document.getElementById('content').scrollHeight);
+    // console.log(document.getElementById('content').scrollHeight);
   ReactDOM.render(<Router routes={routes} history={hashHistory} />,
   document.getElementById('content'));
-  // console.log("height again");
-  // console.log(document.getElementById('content').scrollHeight);
+  // // console.log("height again");
+  // // console.log(document.getElementById('content').scrollHeight);
 
 
   // if(is_safari){

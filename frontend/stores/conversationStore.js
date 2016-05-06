@@ -65,7 +65,7 @@ ConversationStore.__onDispatch = function(payload){
 
     case ConversationConstants.RECEIVE_SEARCH_CONVERSATIONS:
       _searchConversations = payload.conversations;
-      console.log(payload.conversations);
+      // console.log(payload.conversations);
       ConversationStore.__emitChange();
       break;
 

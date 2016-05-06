@@ -10,7 +10,7 @@ var Textfield = ReactMDL.Textfield;
 
 var ConversationForm = React.createClass({
   getInitialState: function() {
-    console.log("conversation form gis");
+    // console.log("conversation form gis");
     if(this.props.conversationId){
       var conversation = ConversationStore.find(this.props.conversationId);
       return({
@@ -29,7 +29,7 @@ var ConversationForm = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log("conversation form cdm");
+    // console.log("conversation form cdm");
     this.conversationListener = ConversationStore.addListener(this.onChange);
   },
 
@@ -38,8 +38,8 @@ var ConversationForm = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps){
-    console.log("Conversation Form cwrp");
-    console.log(newProps);
+    // console.log("Conversation Form cwrp");
+    // console.log(newProps);
     if(this.props.conversationId !== newProps.conversationId){
       if(newProps.conversationId){
         var conversation = ConversationStore.find(newProps.conversationId);
@@ -66,7 +66,7 @@ var ConversationForm = React.createClass({
       this.setState({errors: ConversationStore.getErrors()});
     } else{
       HashHistory.push("messages/" + ConversationStore.all().pop().id);
-      console.log("finsh Form");
+      // console.log("finsh Form");
       this.props.onFinish(event);
     }
   },
@@ -100,7 +100,7 @@ var ConversationForm = React.createClass({
 
 
   render: function() {
-    console.log("conversation form render");
+    // console.log("conversation form render");
     var submitText = this.props.conversationId ? "Update" : "Create";
     var submitTitle = this.props.conversationId ? "Edit Conversation" : "New Conversation";
     return (

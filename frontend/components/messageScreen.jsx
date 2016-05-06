@@ -15,8 +15,8 @@ var Icon = require('react-mdl').Icon;
 
 var MessageScreen = React.createClass({
   getInitialState: function(){
-    console.log("initial state");
-    console.log(UserStore.currentUser());
+    // console.log("initial state");
+    // console.log(UserStore.currentUser());
 
     return {currentUser: UserStore.currentUser(),
             child: "none",
@@ -26,12 +26,12 @@ var MessageScreen = React.createClass({
 
   componentDidMount: function(){
     this.userListener = UserStore.addListener(this.updateUser);
-    console.log("messagePane");
-    console.log(UserStore.currentUser());
+    // console.log("messagePane");
+    // console.log(UserStore.currentUser());
     UserClientActions.fetchCurrentUser();
     if(UserStore.currentUser() === undefined || UserStore.currentUser() === null)
     {
-      console.log("client Action fetch currentUser");
+      // console.log("client Action fetch currentUser");
       UserClientActions.fetchCurrentUser();
     }
   },
@@ -60,7 +60,7 @@ var MessageScreen = React.createClass({
   },
 
   searchConversations: function(event){
-    console.log("serachConversations clicked");
+    // console.log("serachConversations clicked");
     event.preventDefault();
     // HashHistory.push("search-conversations");
     this.setState({child: "search-conversations", conversationId: undefined});
@@ -78,9 +78,9 @@ var MessageScreen = React.createClass({
   },
 
   render: function() {
-    console.log("render messageScreen");
-    console.log(this.state.currentUser);
-    console.log(this.props.children);
+    // console.log("render messageScreen");
+    // console.log(this.state.currentUser);
+    // console.log(this.props.children);
     var username = this.state.currentUser ? this.state.currentUser.user : "";
 
     var child =  null;
@@ -126,7 +126,7 @@ var MessageScreen = React.createClass({
       child = null;
     }
 
-    console.log(child);
+    // console.log(child);
 
     var directions = (
       <div className="instructions-holder">

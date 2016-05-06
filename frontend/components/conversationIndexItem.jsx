@@ -40,7 +40,7 @@ var ConversationIndexItem = React.createClass({
   editConversation: function(event){
     event.preventDefault();
     // debugger;
-    console.log("messages/" + this.props.conversation.id + "/edit");
+    // console.log("messages/" + this.props.conversation.id + "/edit");
     // HashHistory.push("messages/" + this.props.conversation.id + "/edit");
     // HashHistory.push("/");
     this.props.editConversation(this.props.conversation.id);

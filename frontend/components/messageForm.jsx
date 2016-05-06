@@ -23,7 +23,7 @@ var MessageForm = React.createClass({
   },
 
   render: function() {
-    console.log("MessageForm render");
+    // console.log("MessageForm render");
     // <input id="message-submit-button" type="Submit" value="Submit" />
     return (
       <div id="message-form">

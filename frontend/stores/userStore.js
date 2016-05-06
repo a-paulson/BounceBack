@@ -40,7 +40,7 @@ UserStore.processErrors = function(errors){
 };
 
 UserStore.setCurrentUser = function(user){
-  console.log(user);
+  // console.log(user);
   _currentUser = {user: user.username};
   window.sessionStorage.setItem("user", user.username);
 };

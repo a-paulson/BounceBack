@@ -29,22 +29,22 @@ var MessagePane = React.createClass({
       ConversationClientActions.fetchConversation(parseInt(self.props.params.conversationId));
     });
     ConversationClientActions.fetchConversation(parseInt(this.props.params.conversationId));
-    console.log("MessagePane cdm");
-    console.log(this.props.params.conversationId);
+    // console.log("MessagePane cdm");
+    // console.log(this.props.params.conversationId);
   },
 
   componentWillUnmount: function() {
     this.conversationListener.remove();
     this.pusher.unsubscribe('conversation_' +
       this.props.params.conversationId);
-    // console.log("cwum" );
+    // // console.log("cwum" );
   },
 
   componentWillReceiveProps: function(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     ConversationClientActions.fetchConversation(
       parseInt(nextProps.params.conversationId));
-    console.log("cwrp");
+    // console.log("cwrp");
   },
 
   _onChange: function() {
@@ -54,21 +54,21 @@ var MessagePane = React.createClass({
     if (currentConversation){
       this.setState({conversation: currentConversation});
       document.getElementById("message-form").scrollIntoView();
-      console.log("SCROLL");
-      console.log(document.getElementById("message-form"));
+      // console.log("SCROLL");
+      // console.log(document.getElementById("message-form"));
     } else{
       HashHistory.push("/");
     }
 
     // this.forceUpdate();
-    console.log("MessagePane onChange");
+    // console.log("MessagePane onChange");
   },
 
 
   render: function() {
-    console.log("render messagePane");
+    // console.log("render messagePane");
     var messages = this.state.conversation ? this.state.conversation.messages : undefined;
-    // console.log("running rensder: " + messages);
+    // // console.log("running rensder: " + messages);
     return (
       <div className="MessagePane">
         <MessageIndex messages={messages}/>

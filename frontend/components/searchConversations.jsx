@@ -13,13 +13,13 @@ var Tooltip = ReactMDL.Tooltip;
 
 var searchConversations = React.createClass({
   getInitialState: function(){
-    console.log("SearchConversations gis");
+    // console.log("SearchConversations gis");
     return {query: "",
             searchConversations: ConversationStore.searchConversations()};
   },
 
   componentDidMount: function() {
-    console.log("SearchConversations cdm");
+    // console.log("SearchConversations cdm");
     this.conversationListener = ConversationStore.addListener(this.onChange);
     ConversationClientActions.fetchSearchConversations();
   },

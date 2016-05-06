@@ -19,7 +19,7 @@ var SignInForm = React.createClass({
 
   componentWillUpdate: function() {
     if(this.state.currentUser !== undefined){
-      console.log("hashHistory push to /messages");
+      // console.log("hashHistory push to /messages");
       hashHistory.push("/messages");
     }
   },
@@ -89,7 +89,7 @@ var SignInForm = React.createClass({
   },
 
   render: function() {
-    console.log("render signinForm");
+    // console.log("render signinForm");
     var snackbarContainer = document.querySelector('#error-toast');
     if (this.state.errors.length === 0){
       var errors = "";
