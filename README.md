@@ -40,7 +40,7 @@ end
 
 FresherNote is truly a single-page; all content is delivered on one static page.  The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app by making an API call to `SessionsController#get_user`.
 
-![image of messaging layout](https://github.com/a-paulson/BounceBack/tree/master/docs/app_view.png)
+![image of messaging layout](https://raw.githubusercontent.com/a-paulson/BounceBack/master/docs/app_view.png)
 
 
 ### Note Rendering and Editing
