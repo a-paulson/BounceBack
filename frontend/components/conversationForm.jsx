@@ -128,7 +128,7 @@ var ConversationForm = React.createClass({
             />
           </div>
           <div className="left-nav-sub-box">
-          <input type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored form-submit-button"
+          <input type="submit" className="mdl-button mdl-js-button mdl-button--raised form-submit-button"
             onClick={this.resetNavBar} value={submitText} />
           </div>
 

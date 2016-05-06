@@ -26,8 +26,8 @@ var MessageForm = React.createClass({
     console.log("MessageForm render");
     // <input id="message-submit-button" type="Submit" value="Submit" />
     return (
-      <div>
-        <form onSubmit={this.submitMessage} className="mdl-card message-form-card" id="message-form">
+      <div id="message-form">
+        <form onSubmit={this.submitMessage} className="mdl-card message-form-card">
           <input id="message-body-input" type="textarea" onChange={this.changeBody} value={this.state.body} />
             <button type="submit" id="message-submit-button" className="mdl-button mdl-js-button mdl-button--fab subscription-button">
               <Icon name="add_box" />

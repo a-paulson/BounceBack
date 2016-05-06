@@ -1,10 +1,21 @@
 .signin-card.mdl-card {
   width: 340px;
   height: 220px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0);
+  width: 50%;
+  height: 100%;
+  margin-top: 50px;
   /*padding: 10px;*/
 }
 
+.mdl-card__supporting-text.splash-text{
+  color: #E8E8E8;
+  text-align: center;
+}
+
+.splash-text h1{
+  font-size: 64px
+}
 
 .error-card.mdl-card {
   /*width: 340px;
@@ -18,6 +29,21 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  min-height:  -moz-calc(100% - 136px);
+  /* WebKit */
+  min-height:  -webkit-calc(100% - 136px);
+  /* Opera */
+  min-height:  -o-calc(100% - 136px);
+  /* Standard */
+  min-height:  calc(100% - 136px);
+}
+
+.message-pane-holder{
+  height: 100%;
+}
+
+.MessagePane {
+  height: 100%;
 }
 
 .mdl-card.message-card {
@@ -82,6 +108,26 @@
   align-items: center;
 }
 
+.instructions.mdl-card.message-card {
+  height: 300px;
+  padding: 10px;
+  color: #757575;
+}
+
+.instructions.mdl-card.message-card h1{
+  text-align: center;
+}
+
+.instructions.mdl-card.message-card h4{
+  text-align: left;
+}
+
+.instructions-holder{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 #message-body-input{
   font-size: 20px;
   height: 30px;
@@ -99,10 +145,30 @@
 }
 
 .signup-card.mdl-card {
-  width: 340px;
+  width: 320px;
   height: 420px;
   background: rgba(255, 255, 255, 0.85);
-  /*padding: 10px;*/
+  align-self: center;
+  padding: 10px;
+}
+
+.new-session-card.mdl-card {
+  width: 320px;
+  height: 230px;
+  background: rgba(255, 255, 255, 0.85);
+  align-self: center;
+  padding: 10px;
+}
+
+.signin-signup-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.signin-content.center-flex{
+  align-self: center;
 }
 
 .signin-button-box {
@@ -120,25 +186,39 @@
 }*/
 
 .signin-bg {
-  position: relative;
-  height: 800px;
-  width: auto;
-  background-color: #f3f3f3;
-  background: url('http://i.imgur.com/lDLQaJP.jpg') center 30% no-repeat;
-  background-size: cover;
+  /*position: relative;
+  height: 100%;
+  width: auto;*/
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+background: url('http://i.imgur.com/iWXkqqf.jpg') no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+}
+
+.skrim {
+  background: rgba(0, 0, 0, .2);
+  display: flex;
 }
 
 .signin-content {
-  height: 100%;
+  /* Firefox */
+  height: -moz-calc(100% - 130px);
+  /* WebKit */
+  height: -webkit-calc(100% - 130px);
+  /* Opera */
+  height: -o-calc(100% - 130px);
+  /* Standard */
+  height: calc(100% - 130px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.signin-card-button {
-  /*margin: 20px;*/
-  /*width: auto;*/
+  /*margin-top: 5%;*/
 }
 
 .mdl-textfield__input{
@@ -191,6 +271,18 @@
   /*background-color: rgb(123, 160, 179);*/
   background-color: #F59898;
   /*background-color: rosybrown;*/
+}
+
+.form-submit-button{
+  background-color: #E9EFF2;
+  color: #344954;
+}
+.form-submit-button:hover{
+  background-color: #F59898;
+}
+
+.mdl-button--raised:active, .mdl-button--raised:focus:not(:active){
+  background-color: #F59898;
 }
 
 .left-nav-sub-box{
@@ -270,6 +362,7 @@
   flex-direction: row;
   justify-content: flex-start;
   background-color: mintcream;
+  height: 100%
 }
 
 #left-side-nav-bar{
