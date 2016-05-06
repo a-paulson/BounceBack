@@ -133,7 +133,7 @@ var MessageScreen = React.createClass({
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div className="mdl-layout__drawer sidebar-recolor">
               <div className="username-div">
-              <h3 className="username">{username}</h3> <Icon name="account_circle" className="user-icon"/>
+              <h3 className="username">{username}</h3><Icon name="account_circle" className="user-icon"/>
               </div>
               <button className="mdl-button mdl-js-button mdl-button--raised side-nav-button"
                 onClick={this.logout}>Logout</button>

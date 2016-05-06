@@ -1,6 +1,8 @@
 var React = require('react');
 var ConversationClientActions = require('../actions/conversation/conversationClientActions');
 
+var Icon = require('react-mdl').Icon;
+
 var MessageForm = React.createClass({
 
   getInitialState: function() {
@@ -22,12 +24,15 @@ var MessageForm = React.createClass({
 
   render: function() {
     console.log("MessageForm render");
+    // <input id="message-submit-button" type="Submit" value="Submit" />
     return (
       <div>
-        <form onSubmit={this.submitMessage}>
-          <input type="textarea" onChange={this.changeBody} value={this.state.body} />
-          <input type="Submit" value="Submit" />
-        </form>
+        <form onSubmit={this.submitMessage} className="mdl-card message-form-card" id="message-form">
+          <input id="message-body-input" type="textarea" onChange={this.changeBody} value={this.state.body} />
+            <button type="submit" id="message-submit-button" className="mdl-button mdl-js-button mdl-button--fab subscription-button">
+              <Icon name="add_box" />
+            </button>
+            </form>
       </div>
     );
   }
