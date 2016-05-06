@@ -1,30 +1,47 @@
-<!-- # FresherNote
+# BounceBack
 
-[FresherNote live][heroku] **NB:** This should be a link to your production site
+[BounceBack][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://bounce_back.work
 
-FresherNote is a full-stack web application inspired by Evernote.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
+BounceBack is a full-stack messaging app that allows many users to chat together in real time. The goal is to create community where job searchers can interact with companies, look for advice, and socialize. The backend is built using Ruby on Rails with a PostgreSQL database.   The frontend is built on Facebook's ReactJS using Flux architecture and the design is done using Google's Material Design Lite.
+
+fuzzy search
+guest login
+Component nesting
 
 ## Features & Implementation
 
- **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
+### Guest login
+
+BounceBack implements anonymous guest users as first class users. This both fits with its mission, allowing users to discreetly discuss details of their jobs or offers, and solves several technical problems. Since guest users are no different than any other user multiple guests can be logged in at the same time. This creates a smoother experience for those interested in trying BounceBack without signing up.
+
+Guests are created through a custom rails route that calls a custom creation method in the `User` model. Upon creation, guests are assigned a unique 4 digit identifier. This differentiates messages from different users and allows a reasonable number of guest accounts to be created. In order to prevent guest accounts from being reused their password_digest is set to "guest". Since BounceBack uses `BCrypt` to secure passwords, setting the password_digest manually precludes the existence of a valid password. Once a guest account is logged out, no one can access that account again.
+
+```ruby
+#This method generates new guest accounts in the User model
+def self.guest_user
+  username = nil
+
+  while(username.nil? || User.find_by(username: username))
+    username = "Guest" + rand(10000).to_s.rjust(4, "0")
+  end
+
+  guest_user = User.create!(username: username,
+                            fname: "guest",
+                            lname: "guest",
+                            email: username,
+                            user_type: "guest",
+                            password_digest: "guest")
+end
+```
 
 ### Single-Page App
 
 FresherNote is truly a single-page; all content is delivered on one static page.  The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app by making an API call to `SessionsController#get_user`.
 
-```ruby
-class Api::SessionsController < ApplicationController
-    def get_user
-      if current_user
-        render :current_user
-      else
-        render json: errors.full_messages
-      end
-    end
- end
-  ```
+![image of messaging layout](https://github.com/a-paulson/BounceBack/tree/master/docs/app_view.jpg)
+
 
 ### Note Rendering and Editing
 
@@ -71,4 +88,4 @@ Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.j
 
 ### Direct Messaging
 
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.   -->
+Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
