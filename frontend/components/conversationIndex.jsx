@@ -44,10 +44,10 @@ var ConversationIndex = React.createClass({
     // console.log(this.state.conversations);
   },
 
-  newConversation: function(event){
-    event.preventDefault();
-    HashHistory.push("/messages/new-conversation");
-  },
+  // newConversation: function(event){
+  //   event.preventDefault();
+  //   HashHistory.push("/messages/new-conversation");
+  // },
 
   generateConversationItems: function() {
     var conversations = this.state.conversations;
