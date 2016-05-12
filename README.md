@@ -2,7 +2,7 @@
 
 [BounceBack][heroku]
 
-[heroku]: http://bounce_back.work
+[heroku]: http://bounceback.work
 
 BounceBack is a full-stack messaging app that allows many users to chat together in real time. The goal is to create community where job searchers can interact with companies, look for advice, and socialize. The backend is built using Ruby on Rails with a PostgreSQL database.   The frontend is built on Facebook's ReactJS using Flux architecture and the design is done using Google's Material Design Lite.
 
