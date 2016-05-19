@@ -3,20 +3,73 @@
   height: 220px;
   background: rgba(255, 255, 255, 0);
   width: 50%;
+  min-width: 400px;
+  /*width: 100%;*/
   height: 100%;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   /*padding: 10px;*/
 }
 
 .mdl-card__supporting-text.splash-text{
-  color: #E8E8E8;
+  /*color: #E8E8E8;*/
+  color: #FFFFFF;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .splash-text h1{
   font-size: 64px
 }
 
+.splash-text h2,h3 {
+  text-shadow: 2px 2px 3px black;
+}
+
+.splash-text h3{
+  margin-top: 0px;
+  max-width: 675px;
+}
+
+#recruiter-card-text{
+  background: rgba(0,0,0,.7);
+  width: inherit;
+  margin: 0;
+  padding: 20px;
+  /*padding: 2%;*/
+}
+
+.recruiter-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo{
+  width: 70%;
+  min-width: 320px;
+  height: auto;
+}
+
+.logo.internal-logo{
+  width: 45%;
+  align-self: center;
+  min-width: 280px;
+}
+
+@media screen and ( max-width: 1500px ){
+  .logo.internal-logo{
+    width: 35%;
+  }
+}
+
+.internal-text h3{
+  text-shadow: none;
+  text-align: center;
+}
 .error-card.mdl-card {
   /*width: 340px;
   height: 220px;*/
@@ -36,6 +89,7 @@
   min-height:  -o-calc(100% - 136px);
   /* Standard */
   min-height:  calc(100% - 136px);
+  margin-bottom: 126px;
 }
 
 .message-pane-holder{
@@ -66,7 +120,7 @@
   margin: 2%;
   margin-right: 0;
   padding-right: 2%;
-  width: 96;
+  width: 96%;
   color: #757575;
   font-size: 16px;
 }
@@ -143,6 +197,13 @@
   margin-left: 20px;
 }
 
+#message-form{
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+  width: calc(100% - 500px);
+}
+
 .signup-card.mdl-card {
   width: 320px;
   height: 420px;
@@ -156,7 +217,7 @@
   height: 230px;
   background: rgba(255, 255, 255, 0.85);
   align-self: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .signin-signup-box{
@@ -175,19 +236,21 @@
   justify-content: space-around;
 }
 
-/*.signin-input-box {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
+.signin-input-box {
+  width: 100%;
+}
 
-}*/
+.signin-supporting-text{
+  width: inherit;
+  padding-right: 0px;
+  margin: 6px;
+}
+
 
 .signin-bg {
   /*position: relative;
-  height: 100%;
   width: auto;*/
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -204,24 +267,8 @@ background-size: cover;
   display: flex;
 }
 
-.signin-content {
-  /* Firefox */
-  height: -moz-calc(100% - 130px);
-  /* WebKit */
-  height: -webkit-calc(100% - 130px);
-  /* Opera */
-  height: -o-calc(100% - 130px);
-  /* Standard */
-  height: calc(100% - 130px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /*margin-top: 5%;*/
-}
-
 .mdl-textfield__input{
-  width: 200px;
+  width: 100%;
 }
 
 .mdl-mini-footer {
@@ -453,10 +500,12 @@ p {
   font-size: 28px;
   margin: 12px 0 12px 0;
   color: #D5DBDE;
+  text-shadow: none;
 }
 
 .sidebar-recolor{
   background-color: #607d8b;
+  border: 0;
 }
 
 
@@ -469,6 +518,24 @@ width: -webkit-calc(100% - 260px);
 width: -o-calc(100% - 260px);
 /* Standard */
 width: calc(100% - 260px);
+}
+
+.signin-content {
+  width: 100%;
+  /* Firefox */
+  height: -moz-calc(100% - 130px);
+  /* WebKit */
+  height: -webkit-calc(100% - 130px);
+  /* Opera */
+  height: -o-calc(100% - 130px);
+  /* Standard */
+  height: calc(100% - 130px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*margin-top: 5%;*/
+  background: rgba(0,0,0,.44)
 }
 
 
@@ -487,6 +554,30 @@ width: calc(100% - 260px);
 .mdl-textfield__label.sign-in{
   color: rgb(96, 125, 139);
 }
+
+.mdl-logo {
+  float:left;
+  margin-bottom: 0;
+  margin-right: 16px
+}
+
+.mdl-mini-footer--link-list li,.mdl-mini-footer__link-list li {
+  line-height:36px
+}
+
+.mdl-layout__header-row .mdl-navigation__link:hover{
+  color: rgb(96,125,139);
+  background: white;
+}
+
+.mdl-layout__header-row > .mdl-navigation__link{
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /*.mdl-layout__drawer{
   width: 20%;

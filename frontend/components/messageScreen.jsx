@@ -127,17 +127,22 @@ var MessageScreen = React.createClass({
     }
 
     // console.log(child);
+    // <h1>Welcome to BounceBack</h1>
 
     var directions = (
       <div className="instructions-holder">
-        <div className="instructions mdl-card message-card">
-            <h1>Welcome to BounceBack</h1>
-            <h4>
+        <div className="instructions mdl-card message-card internal-text">
+            <img alt="BounceBack Logo" className="logo internal-logo" src="/bb_internal_logo.svg" width="126" height="102" />
+            <h3>
                Jump start your job search today by chatting with recruiters, career coaches and other applicants.
-               Get started by choosing a conversation on the right. Don't see anything you like?
+             </h3><h3>
+               Get started by choosing a conversation on the right.
+             </h3><h3>
+               Don't see anything you like?
                Use the options on the left to message a user, find a new conversation or create your own.
+             </h3><h3>
                Congratulations on taking the first step towards a new career.
-             </h4>
+             </h3>
         </div>
       </div>
 

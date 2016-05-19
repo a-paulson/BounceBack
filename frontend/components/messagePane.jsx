@@ -50,12 +50,13 @@ var MessagePane = React.createClass({
   _onChange: function() {
     var currentConversation = ConversationStore.find(
       parseInt(this.props.params.conversationId));
-    // debugger;
+
     if (currentConversation){
       this.setState({conversation: currentConversation});
-      document.getElementById("message-form").scrollIntoView();
+      var messageCards = document.getElementsByClassName("message-card");
+      messageCards[messageCards.length - 1].scrollIntoView();
       // console.log("SCROLL");
-      // console.log(document.getElementById("message-form"));
+
     } else{
       HashHistory.push("/");
     }
