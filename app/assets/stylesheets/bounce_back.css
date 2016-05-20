@@ -456,6 +456,19 @@ padding-bottom: 10px;
 border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
+#current-conversation{
+  background-color: #D5DBDE;
+  color: slategrey;
+}
+
+#current-conversation .mdl-navigation__link{
+  color: inherit;
+}
+
+#current-conversation:hover{
+  background-color: #F59898;
+}
+
 #no-padding-top{
   padding-top: 0px;
 }

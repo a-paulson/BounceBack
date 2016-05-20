@@ -1,5 +1,6 @@
 var React = require('react');
 var UserStore = require('../stores/userStore');
+var ConversationStore = require('../stores/conversationStore');
 var UserClientActions = require("../actions/user/userClientActions");
 var MessagePane = require("./messagePane");
 var ConversationIndex = require("./conversationIndex");
@@ -34,10 +35,21 @@ var MessageScreen = React.createClass({
       // console.log("client Action fetch currentUser");
       UserClientActions.fetchCurrentUser();
     }
+
+
+    this.conversationListener = ConversationStore.addListener(this.switchConversation);
   },
 
   componentWillUnmount: function() {
     this.userListener.remove();
+    this.conversationListener.remove();
+  },
+
+  switchConversation: function(){
+    if(this.state.nextConversation){
+      HashHistory.push("messages/" + this.state.nextConversation);
+      this.setState({nextConversation: undefined});
+    }
   },
 
   updateUser: function(){
@@ -72,9 +84,14 @@ var MessageScreen = React.createClass({
     this.setState({child: "search-users", conversationId: undefined});
   },
 
-  resetNavBar: function(event){
+  resetNavBar: function(event, nextConversation){
     event.preventDefault();
-    this.setState({child: "none", conversationId: undefined});
+    if(nextConversation){
+      this.setState({child: "none", conversationId: undefined, nextConversation: nextConversation});
+    }
+    else{
+      this.setState({child: "none", conversationId: undefined});
+    }
   },
 
   render: function() {

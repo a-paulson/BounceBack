@@ -39,7 +39,19 @@ var ConversationIndex = React.createClass({
   },
 
   _onChange: function() {
+    var lastConversation = this.state.conversations[this.state.conversations.length - 1]
     this.setState({conversations: ConversationStore.all()});
+    var newLastConversation = this.state.conversations[this.state.conversations.length - 1]
+    if (lastConversation && newLastConversation && lastConversation.id !== newLastConversation.id){
+      HashHistory.push("messages/" + newLastConversation.id);
+    }
+
+    var currentConversation = document.getElementById('current-conversation');
+    if (currentConversation){
+      currentConversation.scrollIntoView();
+      // console.log("SCROLL");
+    }
+
     // console.log("onChange in conversation Index");
     // console.log(this.state.conversations);
   },
@@ -51,10 +63,17 @@ var ConversationIndex = React.createClass({
 
   generateConversationItems: function() {
     var conversations = this.state.conversations;
+    var currentConversationId = window.location.hash.match(/\/messages\/\d+/);
+    if(currentConversationId){
+      currentConversationId = parseInt(currentConversationId[0].match(/\d+/)[0]);
+    }
     if(conversations){
       var self = this;
       return conversations.map(function(conversation){
-          return <ConversationIndexItem editConversation={self.props.editConversation} conversation={conversation} key={conversation.id} />;
+        return <ConversationIndexItem
+          editConversation={self.props.editConversation}
+          conversation={conversation} key={conversation.id}
+          current={conversation.id === currentConversationId ? 1 : 0} />;
       });
     } else{
       return [];

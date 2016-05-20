@@ -77,20 +77,35 @@ var searchUsers = React.createClass({
     });
 
     var self = this;
-    var userArr = matchingUsers.map(function(user){
-      return(
-        <ListItem key={user.id}>
-          <ListItemContent onClick={self.lockInput.bind(self, user.username)}>
-            {user.username}
-          </ListItemContent>
-          <Tooltip label="Message">
-            <button className="mdl-button mdl-js-button mdl-button--fab subscription-button"
-              onClick={self.chatWith.bind(self, user.id, user.username)}>
-              <Icon name="question_answer" />
-            </button>
-          </Tooltip>
-        </ListItem>);
-    });
+    if(matchingUsers.length === 1){
+      var userArr = matchingUsers.map(function(user){
+        return(
+          <ListItem key={user.id}>
+            <ListItemContent onClick={self.lockInput.bind(self, user.username)}>
+              {user.username}
+            </ListItemContent>
+            <Tooltip label="Message">
+              <button className="mdl-button mdl-js-button mdl-button--fab subscription-button"
+                onClick={self.chatWith.bind(self, user.id, user.username)}>
+                <Icon name="question_answer" />
+              </button>
+            </Tooltip>
+          </ListItem>);
+      });
+    } else{
+      var userArr = matchingUsers.map(function(user){
+        return(
+          <ListItem key={user.id}>
+            <ListItemContent onClick={self.lockInput.bind(self, user.username)}>
+              {user.username}
+            </ListItemContent>
+              <button className="mdl-button mdl-js-button mdl-button--fab subscription-button"
+                onClick={self.chatWith.bind(self, user.id, user.username)}>
+                <Icon name="question_answer" />
+              </button>
+          </ListItem>);
+      });
+    }
 
     // <li onClick={this.lockInput.bind(this, user.username)} key={user.id}>
     //   {user.username}

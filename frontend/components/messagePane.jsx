@@ -54,8 +54,10 @@ var MessagePane = React.createClass({
     if (currentConversation){
       this.setState({conversation: currentConversation});
       var messageCards = document.getElementsByClassName("message-card");
-      messageCards[messageCards.length - 1].scrollIntoView();
-      // console.log("SCROLL");
+      if (messageCards.length > 0){
+        messageCards[messageCards.length - 1].scrollIntoView();
+        // console.log("SCROLL");
+      }
 
     } else{
       HashHistory.push("/");

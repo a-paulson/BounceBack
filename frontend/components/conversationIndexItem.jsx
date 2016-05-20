@@ -54,6 +54,17 @@ var ConversationIndexItem = React.createClass({
 
   render: function() {
     var conversation = this.props.conversation;
+    if (parseInt(this.props.current)){
+      return (
+        <div className="conversation-index-item-div" id="current-conversation">
+          <a className="mdl-navigation__link" onClick={this.handleClick} href="">
+            <h5 className="conversation-title">{conversation.title}</h5>
+            <p>{conversation.description}</p>
+          </a>
+          {this.manipulateConversation()}
+        </div>
+      );
+    } else{
       return (
         <div className="conversation-index-item-div">
           <a className="mdl-navigation__link" onClick={this.handleClick} href="">
@@ -63,6 +74,7 @@ var ConversationIndexItem = React.createClass({
           {this.manipulateConversation()}
         </div>
       );
+    }
   }
 
 });

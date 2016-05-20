@@ -45,10 +45,12 @@ var searchConversations = React.createClass({
   },
 
   subscribe: function(id, event){
+    console.log("hello world");
     event.preventDefault();
+    console.log("subscirbed!");
     ConversationClientActions.subscribeToConversation(id);
     ConversationClientActions.fetchSearchConversations();
-    this.props.onFinish(event);
+    this.props.onFinish(event, id);
   },
 
   render: function () {
@@ -73,19 +75,34 @@ var searchConversations = React.createClass({
     });
 
     var self = this;
-    var conversationArr = matchingTitles.map(function(conversation){
+    if (matchingTitles.length == 1){
+      var conversationArr = matchingTitles.map(function(conversation){
+        return(
+          <ListItem key={conversation.id}>
+            <ListItemContent onClick={self.lockInput.bind(self, conversation.title)}>
+              {conversation.title}
+            </ListItemContent>
+            <Tooltip label="Subscribe">
+              <button className="mdl-button mdl-js-button mdl-button--fab subscription-button" onClick={self.subscribe.bind(self, conversation.id)}>
+                <Icon name="add" />
+              </button>
+            </Tooltip>
+          </ListItem>);
+      });
+    }
+    else {
+      var conversationArr = matchingTitles.map(function(conversation){
       return(
         <ListItem key={conversation.id}>
           <ListItemContent onClick={self.lockInput.bind(self, conversation.title)}>
             {conversation.title}
           </ListItemContent>
-          <Tooltip label="Subscribe">
             <button className="mdl-button mdl-js-button mdl-button--fab subscription-button" onClick={self.subscribe.bind(self, conversation.id)}>
               <Icon name="add" />
             </button>
-          </Tooltip>
         </ListItem>);
-    });
+      });
+    }
 
 
     return(
